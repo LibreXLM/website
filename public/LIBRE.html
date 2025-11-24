@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>$LIBRE – LibreTradingEcosystem</title>
+  <meta name="description" content="LIBRE: a personal trading experiment on Stellar. Begun 2023-06-12. Activity-driven value via liquidity pools, burn, and a web of personal tokens." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
+  <style>
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      background: #101018 url('data:image/svg+xml;utf8,\
+        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40">\
+          <rect width="40" height="40" fill="%23101018"/>\
+          <circle cx="6" cy="6" r="1" fill="%23b2f5ff"/>\
+          <circle cx="20" cy="18" r="1" fill="%23ffb2f5"/>\
+          <circle cx="30" cy="10" r="1" fill="%23b2ffcb"/>\
+          <circle cx="14" cy="30" r="1" fill="%23ffd9b2"/>\
+        </svg>') repeat;
+      color: #e8f3ff;
+      font-family: 'VT323', system-ui, monospace;
+      font-size: 22px;
+      line-height: 1.4;
+    }
+
+    .container {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 16px;
+      border: 3px double #5ff6ff;
+      box-shadow: 0 0 0 6px #231942, 0 0 20px 6px rgba(111, 0, 255, 0.25) inset;
+      background: linear-gradient(180deg, rgba(7,7,12,0.95), rgba(12,12,20,0.95));
+    }
+
+    header { text-align: center; margin-bottom: 20px; }
+    .logo-row { display: flex; justify-content: center; gap: 8px; }
+    .badge {
+      padding: 2px 8px; border: 2px solid #ff9dfb; color: #ff9dfb; font-family: 'Press Start 2P'; font-size: 10px;
+      text-transform: uppercase; background: rgba(255,0,230,0.08);
+    }
+    h1 {
+      font-family: 'Press Start 2P'; font-size: 20px; color: #fff7a3;
+      text-shadow: 0 0 6px #f0ff93, 0 0 16px #70fff9; margin: 10px 0;
+    }
+    .marquee { margin: 6px auto 14px; border: 2px dashed #87f0ff; padding: 6px; background: rgba(15,25,35,0.6);
+      overflow: hidden; white-space: nowrap; position: relative; height: 28px; font-family: 'Press Start 2P'; font-size: 10px; letter-spacing: 1px; color: #b2ffcb; }
+    .marquee span { position: absolute; width: max-content; animation: scroll 18s linear infinite; }
+    @keyframes scroll { from { left: 100%; } to { left: -100%; } }
+
+    .content { padding: 10px 0; }
+    .content p { margin: 0 0 12px; }
+
+    .factbar { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin: 16px 0; }
+    .pill { border: 1px solid #ffd9b2; padding: 6px 10px; background: rgba(30,22,10,0.3); font-family: 'Press Start 2P'; font-size: 10px; }
+
+    footer { margin-top: 28px; text-align: center; color: #9cb3c6; font-size: 18px; }
+    footer small { display: block; margin-top: 6px; color: #6f87a0; }
+    .social { margin-top: 10px; font-family: 'Press Start 2P'; font-size: 10px; }
+    .social a { margin: 0 8px; color: #87f0ff; text-decoration: none; }
+    .social a:hover { color: #fff7a3; }
+    .blink { animation: blink 1.2s steps(1,end) infinite; }
+    @keyframes blink { 50% { opacity: 0; } }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="logo-row">
+        <div class="badge">LibreTradingEcosystem</div>
+        <div class="badge">LIBRE</div>
+      </div>
+      <h1>$LIBRE</h1>
+      <div class="marquee"><span>Personal Trading Experiment • Value from Activity • Core of the LTE • Built on Stellar</span></div>
+    </header>
+
+    <div class="content">
+      <p>
+        LIBRE began on June 12th, 2023 as a personal experiment, not as a conventional investment vehicle. The idea was never to create a token that promises stability or profits, but rather to test whether value can emerge simply from the constant flow of trades. Inspired by the Stellardrones project <a href="https://cleanshave.org/alice/" target="_blank">Alice</a>, LIBRE follows the intuition that liquidity pools themselves are engines of value. Trading fees, arbitrage routes, and the ceaseless movement of tokens create a form of activity-based economy, where worth is generated not from scarcity or speculation alone, but from circulation itself.
+      </p>
+      <p>
+        At the center of the LibreTradingEcosystem, LIBRE has become a kind of hub around which many other tokens orbit. Each personal token carries its own liquidity composition, its own risk profile, and its own set of intentions. LIBRE is designed to interact with all of them. The immediate goal is to maximize trading activity and to weave together a dense network of pools that keeps tokens in motion. LIBRE now connects to more than 750 liquidity pools on Stellar, which makes it one of the most frequently traded assets on the network.
+      </p>
+      <p>
+        The surrounding landscape is intentionally eclectic. Many of the tokens that link to LIBRE are small experiments, fragile projects, or playful creations. In this sense, LIBRE is in conversation with other personal trading tokens such as AIus, SVR, BASH, LMT, or GQX — each pursuing its own interpretation of what such an experiment can be. Together they map a field of decentralized tinkering where finance, engineering, and art overlap. By adding more strong liquidity over time — assets like XLM, AFR, SHX, ACT, or USDC — the web of high-quality pools expands, arbitrage routes multiply, and the broader structure gains resilience even in the presence of weaker links.
+      </p>
+      <p>
+        LIBRE evolves through mechanisms meant to test durability. A <a href="supply.html">burn process</a> gradually reduces supply,
+ and additional rewards for early liquidity providers are available until the third anniversary on June 12th, 2026. Beyond that point, the system is expected to run on activity alone. The open question is whether a network effect of hundreds of interconnected pools can sustain momentum without external incentives.
+      </p>
+      <p>
+        Participation is straightforward. Anyone can trade LIBRE, open new pools, or launch a personal token that links into the ecosystem. A step-by-step guide for issuing a personal token and connecting it to LIBRE is available
+<a href="Tutorial.html">here</a>. If you decide to buy LIBRE, my hope is that you build with it — fold it into your own trading system or attach it to a project you believe in.
+
+      </p>
+    </div>
+
+    <div class="factbar">
+      <div class="pill">Started: 2023-06-12</div>
+      <div class="pill">Pools: 750+ on Stellar</div>
+      <div class="pill">Core role: LTE hub</div>
+      <div class="pill">Mechanisms: Burn + Fees</div>
+      <div class="pill">Rewards until: 2026-06-12</div>
+    </div>
+
+    <footer>
+      <div class="blink">█ CURSOR READY… _</div>
+      <small>LibreXLM © 2025 – Hosted on GitHub Pages</small>
+      <div class="social">
+        <a href="https://x.com/LibreXLM" target="_blank">Twitter</a> |
+        <a href="https://t.me/LibreTradingEcosystem" target="_blank">Telegram</a>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>

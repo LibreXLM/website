@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Tutorial – Create Your First Personal Token</title>
+  <style>
+    body {
+      background-color: #000;
+      color: #00ff66;
+      font-family: "Courier New", monospace;
+      padding: 20px;
+    }
+    h1, h2, h3 {
+      color: #00ffcc;
+    }
+    a {
+      color: #ff00aa;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    .nav {
+      margin-bottom: 20px;
+    }
+    .nav a {
+      margin-right: 15px;
+    }
+    .content {
+      max-width: 900px;
+      line-height: 1.6;
+    }
+    .step {
+      margin-bottom: 25px;
+    }
+    .code {
+      background-color: #111;
+      border: 1px solid #00ff66;
+      padding: 10px;
+      margin: 10px 0;
+      white-space: pre-wrap;
+    }
+  </style>
+</head>
+<body>
+  <div class="nav">
+    <a href="index.html">Home</a>
+    <a href="assets.html">List of all Assets</a>
+    <a href="tutorial.html">Tutorial</a>
+  </div>
+
+  <h1>How to Create Your First Personal Token</h1>
+  <div class="content">
+
+    <p>
+      This guide will walk you through the basic steps of creating your first personal token 
+      on the Stellar network. No prior blockchain experience required – just curiosity 
+      and a wallet with a little XLM for fees.
+    </p>
+
+    <div class="step">
+      <h2>Step 1: Set up a Stellar Wallet</h2>
+      <p>
+        You need a Stellar wallet that allows issuing tokens. Popular choices include:
+      </p>
+      <ul>
+        <li><a href="https://lobstr.co/" target="_blank">LOBSTR</a></li>
+        <li><a href="https://freighter.app/" target="_blank">Freighter</a> (browser extension)</li>
+      </ul>
+      <p>
+        Fund your wallet with at least a few lumens (XLM). These are required as a base 
+        reserve and for transaction fees.
+      </p>
+    </div>
+
+    <div class="step">
+      <h2>Step 2: Create an Issuer Account</h2>
+      <p>
+        Tokens on Stellar are always issued from a special account. You can use your wallet 
+        to generate a new keypair. This account will hold the authority to issue your token.
+      </p>
+      <div class="code">
+        Example Keypair:<br>
+        Public Key: GXXXX...<br>
+        Secret Key: SXXXX...
+      </div>
+      <p>
+        ⚠️ Important: Keep the secret key safe. Whoever controls it, controls your token.
+      </p>
+    </div>
+
+    <div class="step">
+      <h2>Step 3: Define Your Token</h2>
+      <p>
+        Choose a code (up to 12 characters) and a name. Examples:
+      </p>
+      <ul>
+        <li><b>Code:</b> YOURNAME</li>
+        <li><b>Name:</b> Your Personal Token</li>
+      </ul>
+      <p>
+        You can then issue your token by sending a "payment" from the issuer account 
+        to your main account with the chosen code.
+      </p>
+    </div>
+
+    <div class="step">
+      <h2>Step 4: Write a TOML File</h2>
+      <p>
+        A TOML file makes your token discoverable and trustworthy. Create a file 
+        <code>stellar.toml</code> in your GitHub Pages repository and describe your token:
+      </p>
+      <div class="code">
+[[CURRENCIES]]<br>
+code="YOURNAME"<br>
+issuer="GYOURISSUERACCOUNT"<br>
+display_decimals=7<br>
+name="Your Personal Token"<br>
+desc="This is my personal token, created to explore the LibreTradingEcosystem."<br>
+image="https://your-link-to-token-logo.png"<br>
+      </div>
+      <p>
+        Make sure the TOML file is hosted at:<br>
+        <code>https://yourgithubusername.github.io/.well-known/stellar.toml</code>
+      </p>
+    </div>
+
+    <div class="step">
+      <h2>Step 5: Add Liquidity (Optional)</h2>
+      <p>
+        To make your token tradable, add it to an AMM liquidity pool against XLM, USDC, 
+        or even another experimental token in the LibreTradingEcosystem.
+      </p>
+    </div>
+
+    <div class="step">
+      <h2>Step 6: Share Your Token</h2>
+      <p>
+        Congratulations 🎉 You’ve just created your first personal token! 
+        Share your asset code and issuer address so others can find and trust it.
+      </p>
+    </div>
+
+  </div>
+</body>
+</html>

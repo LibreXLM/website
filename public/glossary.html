@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>📼 DeFi Glossary – Retro Web Edition</title>
+  <meta name="description" content="A retro-internet style glossary for AMMs, APR, APY, and more – tailored for the LIBRE/LIBREXLM ecosystem." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
+  <style>
+    /* === Retro vibes === */
+    html, body {
+      height: 100%;
+    }
+    body {
+      margin: 0;
+      background: #101018 url('data:image/svg+xml;utf8,\
+        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40">\
+          <rect width="40" height="40" fill="%23101018"/>\
+          <circle cx="6" cy="6" r="1" fill="%23b2f5ff"/>\
+          <circle cx="20" cy="18" r="1" fill="%23ffb2f5"/>\
+          <circle cx="30" cy="10" r="1" fill="%23b2ffcb"/>\
+          <circle cx="14" cy="30" r="1" fill="%23ffd9b2"/>\
+        </svg>') repeat;
+      color: #e8f3ff;
+      font-family: 'VT323', system-ui, monospace;
+      font-size: 22px;
+      line-height: 1.35;
+    }
+
+    a { color: #87f0ff; }
+    a:hover { color: #fff7a3; }
+
+    .container {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 16px;
+      border: 3px double #5ff6ff;
+      box-shadow: 0 0 0 6px #231942, 0 0 20px 6px rgba(111, 0, 255, 0.25) inset;
+      background: linear-gradient(180deg, rgba(7,7,12,0.95), rgba(12,12,20,0.95));
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .logo-row { display: flex; justify-content: center; align-items: center; gap: 8px; }
+    .libre-badge {
+      padding: 2px 8px; border: 2px solid #ff9dfb; color: #ff9dfb; font-family: 'Press Start 2P', system-ui, monospace; font-size: 10px;
+      text-transform: uppercase; letter-spacing: 1px; background: rgba(255,0,230,0.08);
+    }
+
+    h1 {
+      font-family: 'Press Start 2P', system-ui, monospace;
+      font-size: 20px;
+      color: #fff7a3;
+      text-shadow: 0 0 6px #f0ff93, 0 0 16px #70fff9;
+      margin: 10px 0 0;
+    }
+
+    .marquee {
+      margin: 6px auto 14px; border: 2px dashed #87f0ff; padding: 6px; background: rgba(15,25,35,0.6);
+      overflow: hidden; white-space: nowrap; position: relative; height: 28px; font-family: 'Press Start 2P', monospace; font-size: 10px; letter-spacing: 1px; color: #b2ffcb;
+    }
+    .marquee span {
+      position: absolute; width: max-content; animation: scroll 16s linear infinite;
+    }
+    @keyframes scroll { from { left: 100%; } to { left: -100%; } }
+
+    .toolbar {
+      display: grid; grid-template-columns: 1fr auto; gap: 12px; align-items: center;
+      border: 2px solid #5ff6ff; padding: 10px; background: rgba(20,20,32,0.7);
+    }
+    .search {
+      display: flex; align-items: center; gap: 8px;
+    }
+    .search input {
+      flex: 1; font: inherit; padding: 8px 10px; border: 2px solid #87f0ff; background: #0e1620; color: #e8f3ff;
+      box-shadow: inset 0 0 8px rgba(135,240,255,0.25);
+    }
+    .retro-btn {
+      font-family: 'Press Start 2P', monospace; font-size: 10px; padding: 10px 12px; border: 2px solid #ff9dfb; background: #1b0f2a; color: #ffcffd; cursor: pointer;
+      text-transform: uppercase; letter-spacing: 1px; box-shadow: 0 0 12px rgba(255,157,251,0.25);
+    }
+    .retro-btn:hover { filter: brightness(1.1); }
+
+    nav { margin: 18px 0; border: 2px dotted #ffd9b2; padding: 10px; background: rgba(30, 22, 10, 0.3); }
+    nav .toc-title { font-family: 'Press Start 2P', monospace; font-size: 12px; color: #ffd9b2; }
+    nav ul { list-style: square; display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 6px 16px; margin: 8px 0 0; padding: 0 16px; }
+    nav li { margin: 0; }
+
+    section.term {
+      border: 2px solid #3df0ff; padding: 12px; margin: 16px 0; background: rgba(10,20,30,0.65);
+      position: relative;
+    }
+    section.term h2 { margin: 0 0 8px; font-family: 'Press Start 2P'; font-size: 14px; color: #b2ffcb; }
+    section.term p { margin: 0 0 6px; }
+    .tag { font-family: 'Press Start 2P'; font-size: 9px; padding: 3px 6px; border: 1px solid #87f0ff; color: #87f0ff; background: rgba(135,240,255,0.08); margin-left: 6px; }
+
+    .back-top { display: inline-block; margin-top: 8px; font-family: 'Press Start 2P'; font-size: 10px; }
+
+    footer { margin-top: 28px; text-align: center; color: #9cb3c6; font-size: 18px; }
+    footer small { display: block; margin-top: 6px; color: #6f87a0; }
+
+    /* Fake <blink> for extra retro sparkle */
+    .blink { animation: blink 1.2s steps(1, end) infinite; }
+    @keyframes blink { 50% { opacity: 0; } }
+
+    /* Hide on filter */
+    .hidden { display: none !important; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="logo-row">
+        <div class="libre-badge">LIBRE • XLM • DeFi</div>
+        <div class="libre-badge">Glossary</div>
+      </div>
+      <h1> DeFi Glossary</h1>
+      <div class="marquee" aria-hidden="true"><span>Welcome to the time-traveling glossary ✨ Use the search to filter terms • Click items in the TOC • Stay curious, stay sovereign.</span></div>
+      <div class="toolbar">
+        <div class="search">
+          <label for="q">🔎</label>
+          <input id="q" type="search" placeholder="Type to filter: AMM, APR, APY, Impermanent Loss…" aria-label="Filter terms" />
+        </div>
+        <button id="toggleSort" class="retro-btn" title="Toggle A→Z / Original order">Sort A↔Z</button>
+      </div>
+    </header>
+
+    <nav id="toc" aria-label="Table of contents">
+      <div class="toc-title">Index</div>
+      <ul></ul>
+    </nav>
+
+    <main id="glossary" aria-live="polite">
+      <!-- === TERMS START === -->
+
+      <section id="amm" class="term" data-term="AMM Automated Market Maker">
+        <h2>AMM (Automated Market Maker) <span class="tag">Core</span></h2>
+        <p>A decentralized trading mechanism that replaces the traditional order book. Instead of matching individual buy and sell orders, AMMs allow trades to occur against liquidity pools. Prices are set by mathematical formulas, typically constant product (<code>x*y=k</code>). This enables continuous trading but introduces unique risks like impermanent loss.</p>
+        <a class="back-top" href="#top">▲ Back to top</a>
+      </section>
+
+      <section id="apr" class="term" data-term="APR Annual Percentage Rate">
+        <h2>APR (Annual Percentage Rate) <span class="tag">Yield</span></h2>
+        <p>The yearly return rate expressed without compounding. In liquidity pools, APR shows the raw percentage yield that liquidity providers would earn in one year from fees and rewards, assuming no reinvestment of earnings.</p>
+        <a class="back-top" href="#top">▲ Back to top</a>
+      </section>
+
+      <section id="apy" class="term" data-term="APY Annual Percentage Yield">
+        <h2>APY (Annual Percentage Yield) <span class="tag">Yield</span></h2>
+        <p>The yearly return rate including compounding effects. APY assumes that rewards and fees are reinvested into the pool at regular intervals, giving a more realistic estimate of long-term returns compared to APR.</p>
+        <a class="back-top" href="#top">▲ Back to top</a>
+      </section>
+
+      <section id="auto-rebalancing" class="term" data-term="Auto-Rebalancing">
+        <h2>Auto-Rebalancing <span class="tag">AMM</span></h2>
+        <p>The continuous process through which an AMM liquidity pool adjusts its token ratios to reflect market trades. When one asset is bought heavily, its share in the pool decreases while the other increases, keeping the overall pool balanced according to its formula.</p>
+        <a class="back-top" href="#top">▲ Back to top</a>
+      </section>
+
+      <section id="burn-mechanism" class="term" data-term="Burn Mechanism">
+        <h2>Burn Mechanism <span class="tag">Tokenomics</span></h2>
+        <p>A deflationary system where tokens are permanently removed from circulation, typically by sending them to an unspendable address. Burning can create scarcity, symbolically increase value for holders, or act as a reward mechanism by reducing overall supply.</p>
+        <a class="back-top" href="#top">▲ Back to top</a>
+      </section>
+
+      <section id="compounding-effects" class="term" data-term="Compounding Effects">
+        <h2>Compounding Effects <span class="tag">Math</span></h2>
+        <p>The "interest-on-interest" phenomenon in finance. In liquidity pools, compounding occurs when providers reinvest their earnings (fees or rewards) into the pool. Over time, this leads to exponential rather than linear growth in returns.</p>
+        <a class="back-top" href="#top">▲ Back to top</a>
+      </section>
+
+      <section id="diversification" class="term" data-term="Diversification Diverification">
+        <h2>Diversification  <span class="tag">Strategy</span></h2>
+        <p>The practice of spreading assets or liquidity across multiple pools, tokens, or strategies to reduce risk.</p>
+        <a class="back-top" href="#top">▲ Back to top</a>
+      </section>
+
+      <section id="exit-liquidity" class="term" data-term="Exit Liquidity">
+        <h2>Exit Liquidity <span class="tag">Risk</span></h2>
+        <p>A critical risk in token economies: later investors sometimes become the "exit liquidity" for earlier participants, meaning that the only way early holders realize gains is by selling to newcomers. This highlights the importance of sustainable tokenomics rather than pure hype.</p>
+        <a class="back-top" href="#top">▲ Back to top</a>
+      </section>
+
+      <section id="experimental-asset" class="term" data-term="Experimental Asset">
+        <h2>Experimental Asset <span class="tag">Design</span></h2>
+        <p>A token issued primarily for testing ideas, mechanics, or market behaviors rather than providing utility or financial guarantees. These assets often exist to explore theories of value creation, community engagement, or liquidity dynamics.</p>
+        <a class="back-top" href="#top">▲ Back to top</a>
+      </section>
+
+      <section id="governance-token" class="term" data-term="Governance Token">
+        <h2>Governance Token <span class="tag">DAO</span></h2>
+        <p>A token that grants holders voting power over project decisions such as pool parameters, reward structures, or protocol upgrades. Governance tokens embody decentralized decision-making and align the community with the system’s evolution.</p>
+        <a class="back-top" href="#top">▲ Back to top</a>
+      </section>
+
+      <section id="impermanent-loss" class="term" data-term="Impermanent Loss">
+        <h2>Impermanent Loss <span class="tag">Risk</span></h2>
+        <p>The opportunity cost faced by liquidity providers. When token prices move significantly compared to simply holding them, providers may end up with less total value after withdrawing from the pool—even if they earned fees. This "loss" is called impermanent because it may disappear if prices revert.</p>
+        <a class="back-top" href="#top">▲ Back to top</a>
+      </section>
+
+      <section id="liquidity" class="term" data-term="Liquidity">
+  <h2>Liquidity <span class="tag">Core</span></h2>
+  <p>The ease with which an asset can be bought or sold without causing a big change in its price. In the LIBRE system, liquidity is not only about one pool but about ensuring enough flow across the entire ecosystem. High liquidity keeps slippage low and trading smooth, while low liquidity can make markets fragile and costly to interact with.</p>
+  <a class="back-top" href="#top">▲ Back to top</a>
+</section>
+
+<section id="liquidity-composition" class="term" data-term="Liquidity Composition">
+  <h2>Liquidity Composition <span class="tag">System</span></h2>
+  <p>The overall mix of assets that sustain a trading system. LIBRE experiments with combining stable assets (like USDC or anchored tokens) with volatile assets (like experimental or community-driven coins). Stable assets provide predictability and trust, while volatile assets bring dynamism and growth potential. The balance between the two keeps the ecosystem both resilient and lively.</p>
+  <a class="back-top" href="#top">▲ Back to top</a>
+</section>
+
+      
+      <section id="liquidity-lock" class="term" data-term="Liquidity Lock">
+        <h2>Liquidity Lock <span class="tag">Security</span></h2>
+        <p>A security mechanism where liquidity pool tokens are locked for a certain time, preventing sudden withdrawals (also known as "rug pulls"). Locked liquidity signals commitment by the issuer or project team and builds trust among participants.</p>
+        <a class="back-top" href="#top">▲ Back to top</a>
+      </section>
+
+      <section id="personal-token" class="term" data-term="Personal Token">
+        <h2>Personal Token <span class="tag">Social</span></h2>
+        <p>A token issued by an individual, community, or small group that represents identity, reputation, or belief. Personal tokens can be used for access, trust, crowdfunding, or symbolic value, and they form the basis of a more human-centered financial system.</p>
+        <a class="back-top" href="#top">▲ Back to top</a>
+      </section>
+
+      <section id="pool-composition" class="term" data-term="Pool Composition">
+        <h2>Pool Composition <span class="tag">AMM</span></h2>
+        <p>The ratio of assets within a liquidity pool. For example, a 50/50 pool between LIBRE and XLM means equal values of each token are deposited. Different pool weights (e.g., 80/20) can be used to manage volatility or emphasize one asset.</p>
+        <a class="back-top" href="#top">▲ Back to top</a>
+      </section>
+
+      <section id="lp-token" class="term" data-term="Pool Share Token LP Token">
+        <h2>Pool Share Token (LP Token) <span class="tag">AMM</span></h2>
+        <p>When liquidity providers deposit into a pool, they receive LP (Liquidity Provider) tokens in return. These represent their share of the pool and entitle them to a proportional claim on the assets and fees. LP tokens can sometimes be staked for additional rewards.</p>
+        <a class="back-top" href="#top">▲ Back to top</a>
+      </section>
+
+      <section id="reward-farming" class="term" data-term="Reward Farming">
+        <h2>Reward Farming <span class="tag">Incentives</span></h2>
+        <p>A practice where liquidity providers receive extra incentives (beyond normal trading fees), often in the form of new or native tokens like LIBRE. Reward farming encourages participation but can lead to unsustainable inflation if poorly designed.</p>
+        <a class="back-top" href="#top">▲ Back to top</a>
+      </section>
+
+      <section id="slippage" class="term" data-term="Slippage">
+        <h2>Slippage <span class="tag">Trading</span></h2>
+        <p>The difference between the expected price of a trade and the actual executed price. In AMMs, slippage occurs when a trade significantly shifts the token ratio in a pool. Larger trades relative to pool size typically cause higher slippage.</p>
+        <a class="back-top" href="#top">▲ Back to top</a>
+      </section>
+
+      <section id="stablecoins" class="term" data-term="Stablecoins">
+  <h2>Stablecoins <span class="tag">Payments</span></h2>
+  <p>Cryptocurrencies pegged to stable assets like the US dollar or euro. Unlike volatile tokens, stablecoins aim to maintain predictable value, making them useful for payments, savings, and cross-border transfers. On Stellar, stablecoins such as USDC can be issued and traded, offering a bridge between traditional finance and decentralized systems.</p>
+  <a class="back-top" href="#top">▲ Back to top</a>
+</section>
+
+<section id="stellar-network" class="term" data-term="Stellar Network">
+  <h2>The Stellar Network <span class="tag">Inclusion</span></h2>
+  <p>Stellar is an open-source blockchain designed for fast, low-cost payments and asset transfers. Its mission is global financial inclusion—giving people without access to traditional banking the ability to hold, send, and exchange value digitally. Stellar emphasizes cross-border payments, stablecoin issuance, and links between local financial systems, aiming to reduce remittance costs and bring more communities into the digital economy.</p>
+  <a class="back-top" href="#top">▲ Back to top</a>
+</section>
+
+
+      <section id="staking-vs-pooling" class="term" data-term="Staking vs Pooling">
+        <h2>Staking vs. Pooling <span class="tag">Compare</span></h2>
+        <p>Two methods of token allocation in DeFi. Staking means locking tokens to secure a protocol or earn fixed rewards, often with no trading involved. Pooling means providing tokens to an AMM for trading liquidity, earning fees but also facing risks like impermanent loss.</p>
+        <a class="back-top" href="#top">▲ Back to top</a>
+      </section>
+
+      <section id="synthetic-exposure" class="term" data-term="Synthetic Exposure">
+        <h2>Synthetic Exposure <span class="tag">Derivatives</span></h2>
+        <p>Exposure to the price movements of an asset without holding it directly. For example, a synthetic asset might mimic Bitcoin’s price through a derivative contract or a pool-backed token. Synthetic exposure expands access but adds complexity and counterparty risks.</p>
+        <a class="back-top" href="#top">▲ Back to top</a>
+      </section>
+
+      <section id="tokenomics" class="term" data-term="Tokenomics">
+        <h2>Tokenomics <span class="tag">Design</span></h2>
+        <p>The set of rules and design principles governing a token: supply, issuance schedule, burning, inflation, utility, and reward mechanisms. Good tokenomics balance incentives between holders, traders, and liquidity providers to ensure sustainability.</p>
+        <a class="back-top" href="#top">▲ Back to top</a>
+      </section>
+
+      <section id="trading-activity" class="term" data-term="Trading Activity">
+  <h2>Trading Activity <span class="tag">Dynamics</span></h2>
+  <p>The movement of tokens through buying, selling, and swapping. In AMMs and the wider LIBRE ecosystem, trading activity is the lifeblood of liquidity: it generates fees, keeps token prices aligned with markets, and fuels the system’s energy. Too little activity leads to stagnation; sudden spikes can cause slippage or volatility.</p>
+  <a class="back-top" href="#top">▲ Back to top</a>
+</section>
+      <!-- === TERMS END === -->
+    </main>
+
+    <footer id="top">
+      <div class="blink">█ CURSOR READY… _</div>
+      <small>Made with ❤️ + <code>&lt;marquee&gt;</code> energy • LIBREXLM Glossary</small>
+    </footer>
+  </div>
+
+  <script>
+    // Build TOC from terms
+    const glossary = document.getElementById('glossary');
+    const tocList = document.querySelector('#toc ul');
+    const terms = Array.from(glossary.querySelectorAll('section.term'));
+
+    function rebuildTOC(list) {
+      tocList.innerHTML = '';
+      list.forEach(sec => {
+        const li = document.createElement('li');
+        const a = document.createElement('a');
+        a.href = '#' + sec.id;
+        a.textContent = sec.querySelector('h2').firstChild.textContent.trim();
+        li.appendChild(a);
+        tocList.appendChild(li);
+      });
+    }
+
+    rebuildTOC(terms);
+
+    // Filter
+    const q = document.getElementById('q');
+    q.addEventListener('input', () => {
+      const needle = q.value.trim().toLowerCase();
+      const filtered = [];
+      terms.forEach(sec => {
+        const hay = (sec.dataset.term + ' ' + sec.textContent).toLowerCase();
+        const hit = hay.includes(needle);
+        sec.classList.toggle('hidden', needle && !hit);
+        if (!needle || hit) filtered.push(sec);
+      });
+      rebuildTOC(filtered);
+    });
+
+    // Sort toggle A<->Z while preserving original order
+    let az = false;
+    const toggleSort = document.getElementById('toggleSort');
+    const original = terms.slice();
+
+    toggleSort.addEventListener('click', () => {
+      az = !az;
+      const list = az
+        ? terms.slice().sort((a, b) => a.id.localeCompare(b.id))
+        : original;
+      // Re-append in new order
+      list.forEach(sec => glossary.appendChild(sec));
+      rebuildTOC(list.filter(sec => !sec.classList.contains('hidden')));
+      toggleSort.textContent = az ? 'Sort Original' : 'Sort A↔Z';
+    });
+  </script>
+</body>
+</html>

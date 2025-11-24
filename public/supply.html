@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Supply – LibreTradingEcosystem</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      background: #101018;
+      color: #e8f3ff;
+      font-family: 'VT323', monospace;
+      font-size: 20px;
+      line-height: 1.5;
+    }
+    .container {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 16px;
+      border: 3px double #5ff6ff;
+      box-shadow: 0 0 0 6px #231942, 0 0 20px 6px rgba(111,0,255,.25) inset;
+      background: linear-gradient(180deg, rgba(7,7,12,.95), rgba(12,12,20,.95));
+    }
+    header { text-align: center; margin-bottom: 20px; }
+    .badge {
+      display: inline-block; margin: 0 4px; padding: 2px 8px;
+      border: 2px solid #ff9dfb; color: #ff9dfb;
+      font-family: 'Press Start 2P'; font-size: 10px;
+      text-transform: uppercase; background: rgba(255,0,230,.08);
+    }
+    h1 {
+      font-family: 'Press Start 2P'; font-size: 20px; color: #fff7a3;
+      text-shadow: 0 0 6px #f0ff93, 0 0 16px #70fff9; margin: 10px 0;
+    }
+    section { border: 2px solid #3df0ff; padding: 12px; margin: 16px 0; background: rgba(10,20,30,.65); }
+    section h2 { margin: 0 0 10px; font-family: 'Press Start 2P'; font-size: 14px; color: #b2ffcb; }
+    table { width: 100%; border-collapse: collapse; font-size: 18px; }
+    th, td { padding: 8px; border-bottom: 1px dashed #5ff6ff; }
+    th { text-align: left; color: #ffd9b2; font-family: 'Press Start 2P'; font-size: 11px; }
+    tfoot td { font-weight: bold; color: #fff7a3; }
+    a { color: #ffb2f5; text-decoration: none; }
+    a:hover { text-decoration: underline; color: #b2ffcb; }
+    .note {
+      margin-top: 20px;
+      padding: 14px;
+      border: 2px dashed #ff9dfb;
+      background: rgba(255,0,230,.08);
+      color: #ffb2f5;
+      font-size: 18px;
+    }
+    footer { margin-top: 28px; text-align: center; color: #9cb3c6; font-size: 16px; }
+    footer small { display: block; margin-top: 6px; color: #6f87a0; }
+
+    /* 🔥 Burning effect styling */
+    .burning {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      animation: pulseGlow 2s infinite;
+      background: linear-gradient(90deg, rgba(255,80,0,0.1), rgba(255,0,100,0.15), rgba(255,80,0,0.1));
+      background-size: 400% 400%;
+      animation: heatflow 8s ease-in-out infinite;
+    }
+    .flame {
+      font-size: 28px;
+      animation: flicker 1s infinite alternate;
+      text-shadow: 0 0 8px #ff6600, 0 0 16px #ff3300, 0 0 24px #ff0000;
+    }
+    .note-text {
+      text-align: center;
+      color: #ffb2f5;
+      max-width: 700px;
+    }
+    @keyframes flicker {
+      0% { opacity: 0.9; transform: scale(1); }
+      50% { opacity: 0.7; transform: scale(1.1); }
+      100% { opacity: 1; transform: scale(0.95); }
+    }
+    @keyframes pulseGlow {
+      0%, 100% { box-shadow: 0 0 12px #ff0066; }
+      50% { box-shadow: 0 0 20px #ff3300; }
+    }
+    @keyframes heatflow {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="badge">LibreTradingEcosystem</div>
+      <div class="badge">Supply Overview</div>
+      <h1>LIBRE Supply</h1>
+    </header>
+
+    <section>
+      <p>
+        Inspired by Bitcoin’s limited supply concept, LIBRE began with an <b>initial supply of 21,000,000 tokens</b>.  
+        Over time, through multiple <b>burn events</b> and rewards distributed to <b>locked liquidity wallets</b>, the total amount in circulation has decreased.  
+        According to <a href="https://stellar.expert/explorer/public/asset/LIBRE-GAYCCWKECNGDRHYU3UTREBD2XLC3CUQN6FV22TKM4WCQER3IWR7TF5CY-2" target="_blank">StellarExpert</a>,
+        the current supply stands at approximately <b>19,999,998 LIBRE</b>.  
+      </p>
+
+      <p>
+        In addition, several wallets contain LIBRE that are effectively <b>unspendable or permanently locked</b>.  
+        These tokens should not be considered part of the circulating supply.
+      </p>
+
+      <h2>Burned & Locked LIBRE Tokens (as of 2025-10-18)</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Wallet Address</th>
+            <th>Tokens Burned / Locked</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>LIBRE Test Burn Wallet</td>
+            <td><a href="https://stellar.expert/explorer/public/account/GBFLW247CP6E77OMYN6UO4VYCUPQPDS2BD4B3NMM2FY7GD3BC35R6AMA" target="_blank">GBFLW247CP6E77OMYN6UO4VYCUPQPDS2BD4B3NMM2FY7GD3BC35R6AMA</a></td>
+            <td>84,044 LIBRE</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>LIBRE BURN EVENT I</td>
+            <td><a href="https://stellar.expert/explorer/public/account/GBYE7X2QRU4ZGSMUBGJ2I4CRDS3IMJJ4JXK4GTSO4N5ZNJAMGS24TWL3" target="_blank">GBYE7X2QRU4ZGSMUBGJ2I4CRDS3IMJJ4JXK4GTSO4N5ZNJAMGS24TWL3</a></td>
+            <td>43,416 LIBRE</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>LIBRE BURN EVENT II</td>
+            <td><a href="https://stellar.expert/explorer/public/account/GCB2AGWYRRLMSOQGYQ4MVGDYVIFLPWCJY6HFKNJABMXPNSBH52GVHN6Z" target="_blank">GCB2AGWYRRLMSOQGYQ4MVGDYVIFLPWCJY6HFKNJABMXPNSBH52GVHN6Z</a></td>
+            <td>3,219 LIBRE</td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td>LIBRE × DicInu Burn</td>
+            <td><a href="https://stellar.expert/explorer/public/account/GBLPG7DBN6DQN57CSFIJEM3JKBI62F57YDHQPKK5QOSVHRL2MN4SRHHZ" target="_blank">GBLPG7DBN6DQN57CSFIJEM3JKBI62F57YDHQPKK5QOSVHRL2MN4SRHHZ</a></td>
+            <td>27,826 LIBRE</td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td>Locked Issuer Wallet I</td>
+            <td><a href="https://stellar.expert/explorer/public/account/GAGG42ACMQ3454R7GB6JUAKU6OPT4EXPW4QWYKEKBVYDQJC3ELGW74AX" target="_blank">GAGG42ACMQ3454R7GB6JUAKU6OPT4EXPW4QWYKEKBVYDQJC3ELGW74AX</a></td>
+            <td>3,880 LIBRE</td>
+          </tr>
+          <tr>
+            <td>6</td>
+            <td>Locked Issuer Wallet II</td>
+            <td><a href="https://stellar.expert/explorer/public/account/GB7LCUIDT3C2DUOX4O2FSCCBH5NXIUJZ64YQ2N75N5POZRI4DA4AMGEE" target="_blank">GB7LCUIDT3C2DUOX4O2FSCCBH5NXIUJZ64YQ2N75N5POZRI4DA4AMGEE</a></td>
+            <td>5,161 LIBRE</td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="3"><b>Total Tokens Locked / Burned</b></td>
+            <td><b>167,456 LIBRE</b></td>
+          </tr>
+        </tfoot>
+      </table>
+
+      <!-- 🔥 Animated note with flames -->
+      <div class="note burning">
+        <span class="flame">🔥</span>
+        <span class="note-text">
+          Adjusting for these wallets, the estimated circulating supply would be approximately  
+          <b>19,835,641 LIBRE</b> as of October 3, 2025.
+        </span>
+        <span class="flame">🔥</span>
+      </div>
+    </section>
+
+    <footer>
+      <small>Data as of 2025-10-03 • Source: StellarExpert • Numbers may slightly vary with on-chain updates</small>
+    </footer>
+  </div>
+</body>
+</html>

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Liquidity Pools – LibreTradingEcosystem</title>
+  <style>
+    body {
+      background-color: #000;
+      color: #e0e0e0;
+      font-family: "Courier New", monospace;
+      margin: 20px;
+      line-height: 1.6;
+    }
+    h1, h2 {
+      text-align: center;
+      color: #66ccff;
+      text-shadow: 0 0 6px #00ffff;
+    }
+    h2 {
+      margin-top: 30px;
+      color: #ffcc00;
+      text-shadow: 0 0 6px #ff9900;
+    }
+    .nav {
+      text-align: center;
+      margin: 20px 0;
+      padding: 10px;
+      border: 2px solid #ff00ff;
+      box-shadow: 0 0 12px #ff00ff;
+      background: #111;
+    }
+    .nav a {
+      margin: 0 12px;
+      color: #ff6699;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .nav a:hover {
+      text-decoration: underline;
+      color: #66ffcc;
+    }
+    .content {
+      max-width: 900px;
+      margin: auto;
+      text-align: justify;
+    }
+    .highlight {
+      color: #ffd966;
+    }
+    .important {
+      color: #ff8888;
+    }
+    footer {
+      margin-top: 30px;
+      text-align: center;
+      font-size: 12px;
+      color: #888;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="nav">
+    <a href="index.html">Home</a> |
+    <a href="assets.html">Assets</a> |
+    <a href="tutorial.html">Tutorial</a> |
+    <a href="liquidity.html">Liquidity Pools</a>
+  </div>
+
+  <h1>Understanding Liquidity Pools</h1>
+  <div class="content">
+
+    <h2>Liquidity Pools vs. Orderbooks</h2>
+    <p>
+      Traditional exchanges work with an <span class="highlight">orderbook</span>: 
+      every buy and sell order is listed, and a trade only happens when two matching orders meet. 
+      This system requires constant activity and usually depends on professional 
+      market makers to provide liquidity.
+    </p>
+    <p>
+      A <span class="highlight">liquidity pool</span> works differently. Instead of matching buyers and sellers directly, 
+      all participants deposit their tokens into a shared pool. The pool then acts as the counterparty 
+      for every trade. Traders exchange against the pool, not against a single person.
+    </p>
+
+    <h2>How Liquidity Pools Work</h2>
+    <p>
+      Pools usually contain two tokens (for example LIBRE/XLM). 
+      The price is determined by a simple mathematical formula 
+      (<span class="highlight">constant product market maker</span>): 
+      <code>x * y = k</code>. As one asset is bought, its price rises, and the other falls. 
+      This creates automatic and continuous price discovery without a central orderbook.
+    </p>
+
+    <h2>How to Earn Money with Liquidity Pools</h2>
+    <p>
+      Liquidity providers (LPs) earn money in two ways:
+    </p>
+    <ul>
+      <li><b>Trading Fees:</b> Every trade in the pool generates a small fee. 
+          These fees are distributed proportionally to everyone who contributed liquidity.</li>
+      <li><b>Rewards:</b> Some ecosystems (including LibreTradingEcosystem) can distribute 
+          extra rewards to incentivize providing liquidity, usually in the form of native tokens.</li>
+    </ul>
+    <p>
+      By depositing tokens into a pool, you essentially make your assets work for you, 
+      collecting both fees and rewards over time.
+    </p>
+
+    <h2>Risks: Impermanent Loss</h2>
+    <p>
+      The main risk in liquidity pools is called <span class="important">impermanent loss</span>. 
+      This happens when the relative price of the two tokens in a pool changes significantly. 
+      Compared to simply holding the tokens in your wallet, you may end up with fewer tokens of the more valuable asset.
+    </p>
+    <p>
+      The loss is called “impermanent” because if prices return to their original ratio, 
+      the loss disappears. But if prices move permanently, the loss becomes real. 
+      LPs must balance the potential earnings from fees and rewards against this risk.
+    </p>
+
+    <p style="text-align:center; margin-top:30px; font-size: 18px;">
+      👉 Ready to try it? Explore <a href="assets.html">Assets</a> and think about 
+      which pairs you would pool!
+    </p>
+
+  </div>
+
+  <footer>
+    LibreXLM © 2025 – Knowledge is Liquidity
+  </footer>
+</body>
+</html>
