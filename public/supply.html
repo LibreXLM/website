@@ -89,6 +89,17 @@
       50% { background-position: 100% 50%; }
       100% { background-position: 0% 50%; }
     }
+
+    .supply-summary {
+      margin-top: 16px;
+      padding: 10px 12px;
+      border: 2px solid #ffb2f5;
+      background: rgba(20,10,30,.55);
+      font-size: 18px;
+    }
+    .supply-summary b {
+      color: #fff7a3;
+    }
   </style>
 </head>
 <body>
@@ -103,8 +114,7 @@
       <p>
         Inspired by Bitcoin’s limited supply concept, LIBRE began with an <b>initial supply of 21,000,000 tokens</b>.  
         Over time, through multiple <b>burn events</b> and rewards distributed to <b>locked liquidity wallets</b>, the total amount in circulation has decreased.  
-        According to <a href="https://stellar.expert/explorer/public/asset/LIBRE-GAYCCWKECNGDRHYU3UTREBD2XLC3CUQN6FV22TKM4WCQER3IWR7TF5CY-2" target="_blank">StellarExpert</a>,
-        the current supply stands at approximately <b>19,999,998 LIBRE</b>.  
+        The table below and the numbers in the summary are pulled directly from live on-chain data.
       </p>
 
       <p>
@@ -112,7 +122,7 @@
         These tokens should not be considered part of the circulating supply.
       </p>
 
-      <h2>Burned & Locked LIBRE Tokens (as of 2025-10-18)</h2>
+      <h2>Burned & Locked LIBRE Tokens (live on-chain data)</h2>
       <table>
         <thead>
           <tr>
@@ -126,62 +136,250 @@
           <tr>
             <td>1</td>
             <td>LIBRE Test Burn Wallet</td>
-            <td><a href="https://stellar.expert/explorer/public/account/GBFLW247CP6E77OMYN6UO4VYCUPQPDS2BD4B3NMM2FY7GD3BC35R6AMA" target="_blank">GBFLW247CP6E77OMYN6UO4VYCUPQPDS2BD4B3NMM2FY7GD3BC35R6AMA</a></td>
-            <td>84,044 LIBRE</td>
+            <td>
+              <a href="https://stellar.expert/explorer/public/account/GBFLW247CP6E77OMYN6UO4VYCUPQPDS2BD4B3NMM2FY7GD3BC35R6AMA" target="_blank">
+                GBFLW247CP6E77OMYN6UO4VYCUPQPDS2BD4B3NMM2FY7GD3BC35R6AMA
+              </a>
+            </td>
+            <td>
+              <span class="wallet-balance"
+                    data-account="GBFLW247CP6E77OMYN6UO4VYCUPQPDS2BD4B3NMM2FY7GD3BC35R6AMA">
+                loading…
+              </span> LIBRE
+            </td>
           </tr>
           <tr>
             <td>2</td>
             <td>LIBRE BURN EVENT I</td>
-            <td><a href="https://stellar.expert/explorer/public/account/GBYE7X2QRU4ZGSMUBGJ2I4CRDS3IMJJ4JXK4GTSO4N5ZNJAMGS24TWL3" target="_blank">GBYE7X2QRU4ZGSMUBGJ2I4CRDS3IMJJ4JXK4GTSO4N5ZNJAMGS24TWL3</a></td>
-            <td>43,416 LIBRE</td>
+            <td>
+              <a href="https://stellar.expert/explorer/public/account/GBYE7X2QRU4ZGSMUBGJ2I4CRDS3IMJJ4JXK4GTSO4N5ZNJAMGS24TWL3" target="_blank">
+                GBYE7X2QRU4ZGSMUBGJ2I4CRDS3IMJJ4JXK4GTSO4N5ZNJAMGS24TWL3
+              </a>
+            </td>
+            <td>
+              <span class="wallet-balance"
+                    data-account="GBYE7X2QRU4ZGSMUBGJ2I4CRDS3IMJJ4JXK4GTSO4N5ZNJAMGS24TWL3">
+                loading…
+              </span> LIBRE
+            </td>
           </tr>
           <tr>
             <td>3</td>
             <td>LIBRE BURN EVENT II</td>
-            <td><a href="https://stellar.expert/explorer/public/account/GCB2AGWYRRLMSOQGYQ4MVGDYVIFLPWCJY6HFKNJABMXPNSBH52GVHN6Z" target="_blank">GCB2AGWYRRLMSOQGYQ4MVGDYVIFLPWCJY6HFKNJABMXPNSBH52GVHN6Z</a></td>
-            <td>3,219 LIBRE</td>
+            <td>
+              <a href="https://stellar.expert/explorer/public/account/GCB2AGWYRRLMSOQGYQ4MVGDYVIFLPWCJY6HFKNJABMXPNSBH52GVHN6Z" target="_blank">
+                GCB2AGWYRRLMSOQGYQ4MVGDYVIFLPWCJY6HFKNJABMXPNSBH52GVHN6Z
+              </a>
+            </td>
+            <td>
+              <span class="wallet-balance"
+                    data-account="GCB2AGWYRRLMSOQGYQ4MVGDYVIFLPWCJY6HFKNJABMXPNSBH52GVHN6Z">
+                loading…
+              </span> LIBRE
+            </td>
           </tr>
           <tr>
             <td>4</td>
             <td>LIBRE × DicInu Burn</td>
-            <td><a href="https://stellar.expert/explorer/public/account/GBLPG7DBN6DQN57CSFIJEM3JKBI62F57YDHQPKK5QOSVHRL2MN4SRHHZ" target="_blank">GBLPG7DBN6DQN57CSFIJEM3JKBI62F57YDHQPKK5QOSVHRL2MN4SRHHZ</a></td>
-            <td>27,826 LIBRE</td>
+            <td>
+              <a href="https://stellar.expert/explorer/public/account/GBLPG7DBN6DQN57CSFIJEM3JKBI62F57YDHQPKK5QOSVHRL2MN4SRHHZ" target="_blank">
+                GBLPG7DBN6DQN57CSFIJEM3JKBI62F57YDHQPKK5QOSVHRL2MN4SRHHZ
+              </a>
+            </td>
+            <td>
+              <span class="wallet-balance"
+                    data-account="GBLPG7DBN6DQN57CSFIJEM3JKBI62F57YDHQPKK5QOSVHRL2MN4SRHHZ">
+                loading…
+              </span> LIBRE
+            </td>
           </tr>
           <tr>
             <td>5</td>
             <td>Locked Issuer Wallet I</td>
-            <td><a href="https://stellar.expert/explorer/public/account/GAGG42ACMQ3454R7GB6JUAKU6OPT4EXPW4QWYKEKBVYDQJC3ELGW74AX" target="_blank">GAGG42ACMQ3454R7GB6JUAKU6OPT4EXPW4QWYKEKBVYDQJC3ELGW74AX</a></td>
-            <td>3,880 LIBRE</td>
+            <td>
+              <a href="https://stellar.expert/explorer/public/account/GAGG42ACMQ3454R7GB6JUAKU6OPT4EXPW4QWYKEKBVYDQJC3ELGW74AX" target="_blank">
+                GAGG42ACMQ3454R7GB6JUAKU6OPT4EXPW4QWYKEKBVYDQJC3ELGW74AX
+              </a>
+            </td>
+            <td>
+              <span class="wallet-balance"
+                    data-account="GAGG42ACMQ3454R7GB6JUAKU6OPT4EXPW4QWYKEKBVYDQJC3ELGW74AX">
+                loading…
+              </span> LIBRE
+            </td>
           </tr>
           <tr>
             <td>6</td>
             <td>Locked Issuer Wallet II</td>
-            <td><a href="https://stellar.expert/explorer/public/account/GB7LCUIDT3C2DUOX4O2FSCCBH5NXIUJZ64YQ2N75N5POZRI4DA4AMGEE" target="_blank">GB7LCUIDT3C2DUOX4O2FSCCBH5NXIUJZ64YQ2N75N5POZRI4DA4AMGEE</a></td>
-            <td>5,161 LIBRE</td>
+            <td>
+              <a href="https://stellar.expert/explorer/public/account/GB7LCUIDT3C2DUOX4O2FSCCBH5NXIUJZ64YQ2N75N5POZRI4DA4AMGEE" target="_blank">
+                GB7LCUIDT3C2DUOX4O2FSCCBH5NXIUJZ64YQ2N75N5POZRI4DA4AMGEE
+              </a>
+            </td>
+            <td>
+              <span class="wallet-balance"
+                    data-account="GB7LCUIDT3C2DUOX4O2FSCCBH5NXIUJZ64YQ2N75N5POZRI4DA4AMGEE">
+                loading…
+              </span> LIBRE
+            </td>
           </tr>
         </tbody>
         <tfoot>
           <tr>
             <td colspan="3"><b>Total Tokens Locked / Burned</b></td>
-            <td><b>167,456 LIBRE</b></td>
+            <td>
+              <b><span id="total-locked">loading…</span> LIBRE</b>
+            </td>
           </tr>
         </tfoot>
       </table>
+
+      <div class="supply-summary">
+        <div>
+          <b>Total issued LIBRE (StellarExpert):</b>
+          <span id="total-supply">loading…</span> LIBRE
+        </div>
+        <div>
+          <b>Estimated circulating supply (minus locked/burned):</b>
+          <span id="circulating-supply">loading…</span> LIBRE
+        </div>
+      </div>
 
       <!-- 🔥 Animated note with flames -->
       <div class="note burning">
         <span class="flame">🔥</span>
         <span class="note-text">
-          Adjusting for these wallets, the estimated circulating supply would be approximately  
-          <b>19,835,641 LIBRE</b> as of October 3, 2025.
+          Adjusting for the burn and locked wallets above, the circulating LIBRE supply is calculated in real time from on-chain data.
         </span>
         <span class="flame">🔥</span>
       </div>
     </section>
 
     <footer>
-      <small>Data as of 2025-10-03 • Source: StellarExpert • Numbers may slightly vary with on-chain updates</small>
+      <small>
+        Live data from Stellar network • Total supply via StellarExpert API • Numbers may slightly vary with on-chain updates
+      </small>
     </footer>
   </div>
+
+  <script>
+    // --- Config ---
+    const LIBRE_CODE   = "LIBRE";
+    const LIBRE_ISSUER = "GAYCCWKECNGDRHYU3UTREBD2XLC3CUQN6FV22TKM4WCQER3IWR7TF5CY";
+
+    // StellarExpert supply endpoint (text/plain)
+    const STELLAR_EXPERT_SUPPLY_URL =
+      `https://api.stellar.expert/explorer/public/asset/${LIBRE_CODE}-${LIBRE_ISSUER}/supply`;
+
+    // Helper: format number with up to 7 decimals, thousands separators
+    function formatLibre(amount) {
+      if (!isFinite(amount)) return "0";
+      return amount.toLocaleString("en-US", {
+        minimumFractionDigits: 0,
+        maximumFractionDigits: 7
+      });
+    }
+
+    async function fetchJson(url) {
+      const res = await fetch(url);
+      if (!res.ok) {
+        throw new Error(`HTTP ${res.status} for ${url}`);
+      }
+      return res.json();
+    }
+
+    async function fetchText(url) {
+      const res = await fetch(url);
+      if (!res.ok) {
+        throw new Error(`HTTP ${res.status} for ${url}`);
+      }
+      return res.text();
+    }
+
+    // Get LIBRE balance for a given account via Horizon
+    async function getLibreBalanceForAccount(account) {
+      const url = `https://horizon.stellar.org/accounts/${account}`;
+      const data = await fetchJson(url);
+
+      const balances = data.balances || [];
+      const libreBalance = balances.find(
+        (b) =>
+          b.asset_code === LIBRE_CODE &&
+          b.asset_issuer === LIBRE_ISSUER
+      );
+
+      if (!libreBalance) return 0;
+      return parseFloat(libreBalance.balance || "0");
+    }
+
+    // Get total issued supply from StellarExpert (text/plain)
+    async function getLibreTotalSupply() {
+      const text = await fetchText(STELLAR_EXPERT_SUPPLY_URL);
+      // StellarExpert returns a plain number string like "1203229.6298700"
+      return parseFloat(text.trim());
+    }
+
+    async function updateSupplyView() {
+      const balanceSpans = Array.from(
+        document.querySelectorAll(".wallet-balance[data-account]")
+      );
+
+      let totalLocked = 0;
+
+      // 1) Load each wallet balance and update table
+      for (const span of balanceSpans) {
+        const account = span.dataset.account;
+        try {
+          const bal = await getLibreBalanceForAccount(account);
+          totalLocked += bal;
+          span.textContent = formatLibre(bal);
+        } catch (err) {
+          console.error("Failed to load balance for", account, err);
+          span.textContent = "error";
+        }
+      }
+
+      // Update total locked / burned
+      const totalLockedEl = document.getElementById("total-locked");
+      if (totalLockedEl) {
+        totalLockedEl.textContent = formatLibre(totalLocked);
+      }
+
+      // 2) Load total supply from StellarExpert
+      let totalSupply = 0;
+      try {
+        totalSupply = await getLibreTotalSupply();
+      } catch (err) {
+        console.error("Failed to fetch total supply from StellarExpert", err);
+      }
+
+      const totalSupplyEl = document.getElementById("total-supply");
+      if (totalSupplyEl) {
+        totalSupplyEl.textContent = formatLibre(totalSupply);
+      }
+
+      // 3) Circulating supply = total supply - locked/burned
+      const circulating = totalSupply - totalLocked;
+      const circulatingEl = document.getElementById("circulating-supply");
+      if (circulatingEl) {
+        circulatingEl.textContent = formatLibre(circulating);
+      }
+
+      // 4) Update burning note text with live circulating number
+      const note = document.querySelector(".note-text");
+      if (note && isFinite(circulating)) {
+        note.innerHTML =
+          `Adjusting for these wallets, the estimated circulating supply is currently about ` +
+          `<b>${formatLibre(circulating)} LIBRE</b> (live on-chain data).`;
+      }
+    }
+
+    // Kick it off after page load
+    document.addEventListener("DOMContentLoaded", () => {
+      updateSupplyView().catch((err) =>
+        console.error("Failed to update supply view", err)
+      );
+    });
+  </script>
 </body>
 </html>
