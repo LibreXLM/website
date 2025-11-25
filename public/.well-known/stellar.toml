@@ -10,7 +10,7 @@ ORG_NAME="LibreXLM"
 ORG_DESCRIPTION="An Autonomous experimental Trading Token on the Stellar Network"
 ORG_DBA="https://librequidity.org"
 ORG_URL="https://librequidity.org"
-ORG_LOGO="https://librequidity.org/img/LIBRE_PNG.jpg"
+ORG_LOGO="https://librequidity.org/LIBRE_PNG.jpg"
 ORG_OFFICIAL_EMAIL="librexlm@gmail.com"
 
 [[PRINCIPALS]]
@@ -24,11 +24,11 @@ status="live"
 issuer="GBVYKIM4QGW7NK3Q5S76GWMZMLAWYB6FB43JQ4J7ZOXHAA3LEZZGYHSD"
 display_decimals=7
 name="ReverseLibre"
-desc="This token is part of the LibreTradingEcosystem, a network of interconnected assets that continuously trade against one another in AMM liquidity pools. The design goal is to study how coordinated pools, cross-pairs, and rebalancing can compound fees over time and translate pure trading activity into emergent value."
-conditions="This is a personal, experimental trading-system token for research and education. Crypto assets are highly volatile and you may lose your entire stake. There is no redemption right, no price peg, and no guarantees. The token does not represent equity, debt, custody, claims, dividends, or ownership, and confers no rights or expectations of profit from the issuer’s efforts. Supply and parameters may change without notice."
+desc="This token is part of the LibreTradingEcosystem..."
+conditions="This is a personal, experimental trading-system token..."
 image="https://librequidity.org/LIBRE_PNG.jpg"
 is_asset_anchored=false
-is_unlimited=false
+is_unlimited=true
 anchor_asset="ReverseLibre"
 anchor_asset_type="crypto"
 
@@ -38,7 +38,7 @@ status="live"
 issuer="GBVYKIM4QGW7NK3Q5S76GWMZMLAWYB6FB43JQ4J7ZOXHAA3LEZZGYHSD"
 display_decimals=7
 name="LibreVolume"
-desc="This token is part of the LibreTradingEcosystem, a network of interconnected assets..."
+desc="This token is part of the LibreTradingEcosystem..."
 conditions="This is a personal, experimental trading-system token..."
 image="https://librequidity.org/LIBRE_PNG.jpg"
 is_asset_anchored=false
