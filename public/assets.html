@@ -199,59 +199,54 @@
       tokens.forEach(asset => {
         const li = document.createElement("li");
 
-        // Token link → Stellar.Expert asset page
-        const tokenA = document.createElement("a");
-        tokenA.className = "token-link";
-        tokenA.href = `https://stellar.expert/explorer/public/asset/${asset.code}-${asset.issuer}`;
-        tokenA.target = "_blank";
-        tokenA.textContent = asset.code;
+      <!-- Asset-Liste -->
+  <script src="assets.js"></script>
 
-        const labelSpan = document.createElement("span");
-        labelSpan.className = "token-supply-label";
-        labelSpan.textContent = "Supply:";
+  <script>
+    const table = document.getElementById("assetTable");
 
-        const supplySpan = document.createElement("span");
-        supplySpan.className = "token-supply";
-        supplySpan.textContent = "Loading…";
+    function formatNumber(num) {
+      return Number(num).toLocaleString("en-US", { maximumFractionDigits: 2 });
+    }
 
-        const key = `${asset.code}:${asset.issuer}`;
-        if (!supplyNodes[key]) supplyNodes[key] = [];
-        supplyNodes[key].push(supplySpan);
-
-        li.appendChild(tokenA);
-        li.appendChild(labelSpan);
-        li.appendChild(supplySpan);
-        ul.appendChild(li);
-      });
-
-      block.appendChild(ul);
-      listContainer.appendChild(block);
-    });
-
-    // Fetch supply once per asset and update all linked DOM nodes
     assets.forEach(asset => {
-      const key = `${asset.code}:${asset.issuer}`;
-      fetch(`https://horizon.stellar.org/assets?asset_code=${encodeURIComponent(asset.code)}&asset_issuer=${asset.issuer}`)
+      const row = document.createElement("tr");
+
+      // Token (mit Link)
+      const tokenCell = document.createElement("td");
+      tokenCell.className = "token";
+      const link = document.createElement("a");
+      link.href = `https://cleanshave.org/tool/asset-detail.html?code=${asset.code}&issuer=${asset.issuer}`;
+      link.textContent = asset.code;
+      tokenCell.appendChild(link);
+
+      // Issuer
+      const issuerCell = document.createElement("td");
+      issuerCell.className = "issuer";
+      issuerCell.textContent = asset.issuer;
+
+      // Supply (live von Horizon)
+      const supplyCell = document.createElement("td");
+      supplyCell.className = "supply";
+      supplyCell.textContent = "Loading…";
+      fetch(`https://horizon.stellar.org/assets?asset_code=${asset.code}&asset_issuer=${asset.issuer}`)
         .then(r => r.json())
         .then(d => {
-          let text = "n/a";
-          if (d._embedded && d._embedded.records && d._embedded.records.length > 0) {
-            text = formatNumber(d._embedded.records[0].amount);
-          }
-          if (supplyNodes[key]) {
-            supplyNodes[key].forEach(node => {
-              node.textContent = text;
-            });
+          if (d._embedded.records.length > 0) {
+            supplyCell.textContent = formatNumber(d._embedded.records[0].amount);
+          } else {
+            supplyCell.textContent = "n/a";
           }
         })
-        .catch(() => {
-          if (supplyNodes[key]) {
-            supplyNodes[key].forEach(node => {
-              node.textContent = "error";
-            });
-          }
-        });
+        .catch(() => { supplyCell.textContent = "error"; });
+
+      row.appendChild(tokenCell);
+      row.appendChild(issuerCell);
+      row.appendChild(supplyCell);
+      table.appendChild(row);
     });
   </script>
+
+  <p class="back"><a href="index.html">⬅ Back to Home</a></p>
 </body>
 </html>
