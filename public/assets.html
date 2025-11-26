@@ -98,15 +98,50 @@
       margin: 0 auto;
       line-height: 1.6;
     }
-    .code {
-      background-color: #111;
-      border: 1px solid #00ff66;
-      padding: 10px;
+
+    /* Grouped token list styles */
+    .issuer-block {
       margin: 20px 0;
-      white-space: pre-wrap;
-      font-size: 12px;
-      color: #e0e0e0;
-      box-shadow: 0 0 10px #00ff66;
+      padding: 12px;
+      background-color: #050505;
+      border: 1px solid #333;
+      box-shadow: 0 0 8px #222;
+    }
+    .issuer-link {
+      display: inline-block;
+      margin-bottom: 8px;
+      color: #ff66ff;
+      font-weight: bold;
+      text-decoration: none;
+      text-shadow: 0 0 6px #ff00ff;
+      word-break: break-all;
+    }
+    .issuer-link:hover {
+      color: #00ffff;
+      text-shadow: 0 0 8px #00ffff;
+      text-decoration: underline;
+    }
+    .issuer-block ul {
+      list-style-type: none;
+      padding-left: 10px;
+      margin: 0;
+    }
+    .issuer-block li {
+      margin: 3px 0;
+      font-size: 13px;
+    }
+    .token-code {
+      color: #00ffcc;
+      font-weight: bold;
+    }
+    .token-supply-label {
+      color: #aaaaaa;
+      margin-left: 6px;
+    }
+    .token-supply {
+      color: #ffd966;
+      font-family: monospace;
+      margin-left: 2px;
     }
   </style>
 </head>
@@ -148,149 +183,28 @@
       If you interact with these tokens, you do so at your own risk.
     </p>
 
-  
-
-    <h2> Token List</h2>
+    <h2>Live Asset Overview</h2>
     <p>
-      For transparency, here is the hopefully complete list of known LibreTradingEcosystem tokens and their issuers:
+      Each token in the table below links to its CleanShave detail page. Total supply values are
+      fetched live from the Stellar network (the same on-chain data that Stellar.Expert displays).
     </p>
 
-    <div class="code">
+    <table id="assetTable">
+      <tr>
+        <th>Token</th>
+        <th>Issuer</th>
+        <th>Total Supply</th>
+      </tr>
+    </table>
 
+    <h2>Token List (Grouped by Issuer)</h2>
+    <p>
+      Below you can see the same assets grouped by issuer. Each issuer is highlighted and links
+      directly to the corresponding <b>Stellar.Expert</b> account page. Supplies shown here are
+      the same live values used in the table above.
+    </p>
 
-Issuer: GAYCCWKECNGDRHYU3UTREBD2XLC3CUQN6FV22TKM4WCQER3IWR7TF5CY
-
-LIBRE
-
-Issuer: GCV4LXAU5PMYTIO7P5USPE2HUKLRCV2PPMULTOQSZESFLJLVL25W6D7F
-
-LIBERATOR (launched on Lumoscore)
-
-Issuer: GBVYKIM4QGW7NK3Q5S76GWMZMLAWYB6FB43JQ4J7ZOXHAA3LEZZGYHSD
-
-ReverseLibre
-xLUMOS
-LibreXLM
-yXLMFISH
-CountryToken
-yBASH
-LibreII
-yVELO
-ySHX
-yAFR
-TreehouseVI
-Libre100
-Libre777
-LiBrE
-yWALLY
-EVA
-LibreVaultX
-LibreXYZ
-yLibreXYZ
-yMEME
-yLMNR
-yAPpay
-yACT
-ySCROOGE
-yJOHN
-DicLibre
-LIBREBONER
-yPOYE
-yBLND
-LIBRE123
-xXTAR
-TestLibre
-LIBRA
-xLIBRE
-xKIWI
-yKIWI
-LIBRE0
-LumenLibre
-StellarLibre
-LIBREUSD
-yBRAINFROG
-yBEAR
-ySIG
-GetSomeLibre
-LibreVolume
-yZOMB
-yFRED
-yLMT
-yLUMOS
-maxBREAD
-200XLM
-yDWARF
-100XLM
-not100XLM
-yTATT
-yBBOI
-yGRACE
-Libre420
-
-Issuer: GBXN3ONPRC4TX4CQFYAOCMSFCZSUTR2U3GJWCVQ27Z2OKFWTW42HE2ZK
-
-MOONSHOT
-ANUSINU
-ShitCoin
-FruityDude
-YLM
-LOVE
-
-Issuer: GANIPXJRN6TSH7354OGYH4XS5P6L72MFTZ32BGHIOB2H6JD3MLJCPUXQ
-
-BuyMoreLibre
-LIBRE7
-LIBRE6
-LIBRE5
-LIBRE4
-LIBRE3
-LIBRE2
-LIBRE1
-yZONE
-xSTK
-NoLimitLibre
-ySTK
-yFUN
-BuyLibre
-aLibre
-1090
-HEDGE
-random
-yPYCB
-yDeCent
-yANGN
-yLIBRE
-zLIBRE
-
-Issuer: GD3ACA6FPINT4FDAA3YKR5M5OCDQ5NOQ24VW4TUMGKFENOLYO37UOD7Q
-
-NFTInu
-xyz
-anAfrican
-aDic
-SBEZZY
-212121212121
-
-Issuer: GAGG42ACMQ3454R7GB6JUAKU6OPT4EXPW4QWYKEKBVYDQJC3ELGW74AX
-
-1312
-NoLibreToken
-xLSPx
-HODL
-DiemLibre
-xxXLM
-
-Issuer: GBJEIA7DSCBQS37XH6NYBVDVF6DDYM33DJRP6PIQQQNBQLSHHCUKVIDS
-
-Das Kapital
-
-Issuer: GDID3VFXZ6BZXIBVCQXUYVUEOVPZHNBQUGDNZ43GIYD2F4QM2YBO4MF5
-
-LibreVault
-LIBRE
-Librequidity
-LibreToken
-    </div>
+    <div id="tokenList"></div>
 
     <p class="back"><a href="index.html">⬅ Back to Home</a></p>
   </div>
@@ -300,46 +214,126 @@ LibreToken
 
   <script>
     const table = document.getElementById("assetTable");
+    const listContainer = document.getElementById("tokenList");
 
     function formatNumber(num) {
       return Number(num).toLocaleString("en-US", { maximumFractionDigits: 2 });
     }
 
+    // Map from "code:issuer" -> array of DOM nodes that should receive the supply value
+    const supplyNodes = {};
+
+    // 1) Build the table using the global `assets` array from assets.js
     assets.forEach(asset => {
       const row = document.createElement("tr");
 
-      // Token (with link)
+      // Token (with link to CleanShave)
       const tokenCell = document.createElement("td");
       tokenCell.className = "token";
       const link = document.createElement("a");
       link.href = `https://cleanshave.org/tool/asset-detail.html?code=${asset.code}&issuer=${asset.issuer}`;
       link.textContent = asset.code;
+      link.target = "_blank";
       tokenCell.appendChild(link);
 
-      // Issuer
+      // Issuer (plain text in table)
       const issuerCell = document.createElement("td");
       issuerCell.className = "issuer";
       issuerCell.textContent = asset.issuer;
 
-      // Supply (live from Horizon)
+      // Supply cell
       const supplyCell = document.createElement("td");
       supplyCell.className = "supply";
       supplyCell.textContent = "Loading…";
-      fetch(`https://horizon.stellar.org/assets?asset_code=${asset.code}&asset_issuer=${asset.issuer}`)
-        .then(r => r.json())
-        .then(d => {
-          if (d._embedded.records.length > 0) {
-            supplyCell.textContent = formatNumber(d._embedded.records[0].amount);
-          } else {
-            supplyCell.textContent = "n/a";
-          }
-        })
-        .catch(() => { supplyCell.textContent = "error"; });
+
+      const key = `${asset.code}:${asset.issuer}`;
+      if (!supplyNodes[key]) supplyNodes[key] = [];
+      supplyNodes[key].push(supplyCell);
 
       row.appendChild(tokenCell);
       row.appendChild(issuerCell);
       row.appendChild(supplyCell);
       table.appendChild(row);
+    });
+
+    // 2) Group assets by issuer for the list
+    const groupedByIssuer = {};
+    assets.forEach(asset => {
+      if (!groupedByIssuer[asset.issuer]) {
+        groupedByIssuer[asset.issuer] = [];
+      }
+      groupedByIssuer[asset.issuer].push(asset);
+    });
+
+    // 3) Build grouped token list with clickable issuer + inline supply
+    Object.entries(groupedByIssuer).forEach(([issuer, tokens]) => {
+      const block = document.createElement("div");
+      block.className = "issuer-block";
+
+      // Issuer link to Stellar.Expert
+      const issuerHeader = document.createElement("div");
+      const issuerLink = document.createElement("a");
+      issuerLink.className = "issuer-link";
+      issuerLink.href = `https://stellar.expert/explorer/public/account/${issuer}`;
+      issuerLink.target = "_blank";
+      issuerLink.textContent = `Issuer: ${issuer}`;
+      issuerHeader.appendChild(issuerLink);
+      block.appendChild(issuerHeader);
+
+      const ul = document.createElement("ul");
+
+      tokens.forEach(asset => {
+        const li = document.createElement("li");
+
+        const codeSpan = document.createElement("span");
+        codeSpan.className = "token-code";
+        codeSpan.textContent = asset.code;
+
+        const labelSpan = document.createElement("span");
+        labelSpan.className = "token-supply-label";
+        labelSpan.textContent = "Supply:";
+
+        const supplySpan = document.createElement("span");
+        supplySpan.className = "token-supply";
+        supplySpan.textContent = "Loading…";
+
+        const key = `${asset.code}:${asset.issuer}`;
+        if (!supplyNodes[key]) supplyNodes[key] = [];
+        supplyNodes[key].push(supplySpan);
+
+        li.appendChild(codeSpan);
+        li.appendChild(labelSpan);
+        li.appendChild(supplySpan);
+        ul.appendChild(li);
+      });
+
+      block.appendChild(ul);
+      listContainer.appendChild(block);
+    });
+
+    // 4) Fetch supply once per asset and update all linked DOM nodes (table + list)
+    assets.forEach(asset => {
+      const key = `${asset.code}:${asset.issuer}`;
+      fetch(`https://horizon.stellar.org/assets?asset_code=${asset.code}&asset_issuer=${asset.issuer}`)
+        .then(r => r.json())
+        .then(d => {
+          let text = "n/a";
+          if (d._embedded && d._embedded.records && d._embedded.records.length > 0) {
+            text = formatNumber(d._embedded.records[0].amount);
+          }
+          if (supplyNodes[key]) {
+            supplyNodes[key].forEach(node => {
+              node.textContent = text;
+            });
+          }
+        })
+        .catch(() => {
+          if (supplyNodes[key]) {
+            supplyNodes[key].forEach(node => {
+              node.textContent = "error";
+            });
+          }
+        });
     });
   </script>
 </body>
