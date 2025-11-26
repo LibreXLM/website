@@ -124,46 +124,90 @@
     <div class="step">
       <h2>Step 1: Set up a Stellar Wallet</h2>
       <p>
-        You need a Stellar wallet that allows issuing tokens. Popular choices include:
+        You need a Stellar wallet that allows you to hold multiple assets and sign transactions. 
+        Popular choices include:
       </p>
       <ul>
         <li><a href="https://lobstr.co/" target="_blank">LOBSTR</a></li>
         <li><a href="https://freighter.app/" target="_blank">Freighter</a> (browser extension)</li>
       </ul>
       <p>
-        Fund your wallet with at least a few lumens (XLM). These are required as a base 
-        reserve and for transaction fees.
+        Create or restore your wallet and fund it with at least a few lumens (XLM). 
+        XLM is required as a base reserve and to pay for transaction fees on the network.
+      </p>
+      <p>
+        This main wallet will usually act as your “personal” wallet – the place where you hold 
+        and manage your assets, including the tokens you create.
       </p>
     </div>
 
     <div class="step">
-      <h2>Step 2: Create an Issuer Account</h2>
+      <h2>Step 2: Create an Issuer Account and a Distribution Wallet</h2>
       <p>
-        Tokens on Stellar are always issued from a special account. You can use your wallet 
-        to generate a new keypair. This account will hold the authority to issue your token.
-      </p>
-      <div class="code">
-        Example Keypair:<br>
-        Public Key: GXXXX...<br>
-        Secret Key: SXXXX...
-      </div>
-      <p>
-        ⚠️ Important: Keep the secret key safe. Whoever controls it, controls your token.
-      </p>
-    </div>
-
-    <div class="step">
-      <h2>Step 3: Define Your Token</h2>
-      <p>
-        Choose a code (up to 12 characters) and a name. Examples:
+        On Stellar, tokens are issued from a dedicated <b>issuer account</b>, but they are usually 
+        held and traded from a separate <b>distribution account</b>.
       </p>
       <ul>
-        <li><b>Code:</b> YOURNAME</li>
-        <li><b>Name:</b> Your Personal Token</li>
+        <li><b>Issuer account:</b> Has the authority to issue (mint) your token.</li>
+        <li><b>Distribution account:</b> Holds the actual balance of your token and sends it to users.</li>
       </ul>
       <p>
-        You can then issue your token by sending a "payment" from the issuer account 
-        to your main account with the chosen code.
+        Using your wallet or the Stellar Laboratory, generate a new keypair for the issuer account and 
+        fund it with the minimum XLM required to exist on the network.
+      </p>
+      <p>
+        Then decide which account will be your <b>distribution wallet</b>. This can be your main wallet 
+        or another dedicated account. On the distribution account, you must:
+      </p>
+      <ul>
+        <li>Add a <b>trustline</b> to your new asset (your token code + issuer public key).</li>
+        <li>Make sure the asset’s code/name is clear so you can recognize it in the wallet interface.</li>
+      </ul>
+      <p>
+        Without this trustline on the distribution account, it cannot receive or hold your newly created token.
+      </p>
+      <p>
+        ⚠️ Important: Keep the issuer secret key safe. Whoever controls it, controls the ability 
+        to mint more of your token (unless you later lock the issuer).
+      </p>
+    </div>
+
+    <div class="step">
+      <h2>Step 3: Issue Your Token Using Stellar Laboratory</h2>
+      <p>
+        Now that you have:
+      </p>
+      <ul>
+        <li>an issuer account, and</li>
+        <li>a distribution account with a trustline to your new asset,</li>
+      </ul>
+      <p>
+        …you can actually <b>create (issue) your token</b>.
+      </p>
+      <p>
+        You can do this using the official Stellar Laboratory at 
+        <a href="https://lab.stellar.org" target="_blank">https://lab.stellar.org</a>.
+      </p>
+      <p>
+        In the Laboratory, go to the transaction builder and:
+      </p>
+      <ul>
+        <li>Select the <b>“Send Payment”</b> operation.</li>
+        <li>Set the <b>source account</b> to your issuer account.</li>
+        <li>Set the <b>destination account</b> to your distribution wallet.</li>
+        <li>As the <b>asset</b>, choose “Alphanumeric” and enter your token code (e.g. <code>YOURNAME</code>) and your issuer public key.</li>
+        <li>Enter the <b>amount</b> you want to issue (for example, <code>1000</code>).</li>
+      </ul>
+      <p>
+        When you submit and sign this transaction:
+      </p>
+      <ul>
+        <li>The issuer account “pays” the distribution account with your new asset.</li>
+        <li>This first payment is effectively the moment your token comes into existence on the Stellar network.</li>
+      </ul>
+      <p>
+        After sending the payment, you have officially created your first token and it now exists as a 
+        balance on your distribution account.
       </p>
     </div>
 
@@ -171,7 +215,8 @@
       <h2>Step 4: Write a TOML File</h2>
       <p>
         A TOML file makes your token discoverable and trustworthy. Create a file 
-        <code>stellar.toml</code> in your GitHub Pages repository and describe your token:
+        <code>stellar.toml</code> in your GitHub Pages repository (or any HTTPS-hosted site) 
+        and describe your token:
       </p>
       <div class="code">
 [[CURRENCIES]]<br>
@@ -184,23 +229,50 @@ image="https://your-link-to-token-logo.png"<br>
       </div>
       <p>
         Make sure the TOML file is hosted at:<br>
-        <code>yourwebsite.well-known/stellar.toml</code>
+        <code>https://yourgithubusername.github.io/.well-known/stellar.toml</code>
+      </p>
+      <p>
+        Once this is online and correctly formatted, wallets like LOBSTR and explorers like 
+        Stellar.Expert can show your token logo and description.
       </p>
     </div>
 
     <div class="step">
       <h2>Step 5: Add Liquidity (Optional)</h2>
       <p>
-        To make your token tradable, add it to an AMM liquidity pool against XLM, USDC, 
-        or even another experimental token in the LibreTradingEcosystem.
+        To make your token tradable, you can add it to an AMM liquidity pool.
+      </p>
+      <p>
+        On Stellar-based interfaces that support AMMs, you can:
+      </p>
+      <ul>
+        <li>Create a pool between your token and XLM,</li>
+        <li>or between your token and USDC,</li>
+        <li>or even pair it with another experimental token from the LibreTradingEcosystem.</li>
+      </ul>
+      <p>
+        By depositing both assets into the pool, you make it possible for others to swap your token. 
+        If fees are enabled, the pool can also start accumulating trading fees over time.
       </p>
     </div>
 
     <div class="step">
       <h2>Step 6: Share Your Token</h2>
       <p>
-        Congratulations 🎉 You’ve just created your first personal token! 
-        Share your asset code and issuer address so others can find and trust it.
+        Congratulations 🎉 You’ve just created your first personal token!
+      </p>
+      <p>
+        Share your asset code and issuer address so others can:
+      </p>
+      <ul>
+        <li>add a trustline to your asset,</li>
+        <li>view it on Stellar.Expert or other explorers,</li>
+        <li>and, if you added liquidity, trade it on AMM pools.</li>
+      </ul>
+      <p>
+        Be clear whether this is a community token, an experimental store of value, 
+        or part of a broader system like the LibreTradingEcosystem. 
+        You are now running your own micro-asset on a live network.
       </p>
     </div>
 
