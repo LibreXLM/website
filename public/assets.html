@@ -16,8 +16,13 @@
       text-shadow: 0 0 8px #00ffff, 0 0 12px #003366;
       margin-bottom: 10px;
     }
+    h2 {
+      color: #66ccff;
+      margin-top: 30px;
+      text-shadow: 0 0 6px #00ffff;
+    }
     p {
-      text-align: center;
+      text-align: left;
       color: #ccc;
     }
     table {
@@ -88,6 +93,21 @@
       color: #ffccff;
       box-shadow: 0 0 10px #ff00ff;
     }
+    .content {
+      max-width: 1000px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+    .code {
+      background-color: #111;
+      border: 1px solid #00ff66;
+      padding: 10px;
+      margin: 20px 0;
+      white-space: pre-wrap;
+      font-size: 12px;
+      color: #e0e0e0;
+      box-shadow: 0 0 10px #00ff66;
+    }
   </style>
 </head>
 <body>
@@ -98,17 +118,196 @@
     </marquee>
   </div>
 
-  <p>Each token links to its CleanShave detail page. Supply values are fetched live from the Stellar network.</p>
+  <div class="content">
+    <p>
+      Over the last few years I have created a growing set of tokens that together form the
+      <b>LibreTradingEcosystem</b>. Many of these assets trade permanently against <b>LIBRE</b>,
+      against other tokens on the Stellar network, and in some cases even against other
+      personal trading tokens inside this ecosystem.
+    </p>
 
-  <table id="assetTable">
-    <tr>
-      <th>Token</th>
-      <th>Issuer</th>
-      <th>Total Supply</th>
-    </tr>
-  </table>
+    <p>
+      The names of these tokens can be read in different ways: sometimes they are completely
+      random or playful, sometimes they are a subtle hint towards the underlying liquidity
+      composition, the idea behind the token, or the way it is meant to move in relation to
+      other assets. A weird name does not necessarily mean “just a meme” – it might be wired
+      into a specific liquidity setup.
+    </p>
 
-  <!-- Asset-Liste -->
+    <p>
+      All of these tokens are <b>experimental and risky</b>. Their performance and value depend on:
+    </p>
+    <ul>
+      <li>the underlying liquidity pool composition (which assets, and in what proportions),</li>
+      <li>accumulated and future trading fees inside AMM pools,</li>
+      <li>and any external demand or interest from other users.</li>
+    </ul>
+    <p>
+      Nothing here is financial advice. The LibreTradingEcosystem is an open-ended experiment
+      in on-chain motion, programmable value, and self-built micro economies on Stellar.
+      If you interact with these tokens, you do so at your own risk.
+    </p>
+
+    <p>
+      Each token in the table below links to its CleanShave asset detail page.
+      Total supply values are fetched live from the Stellar network.
+    </p>
+
+    <table id="assetTable">
+      <tr>
+        <th>Token</th>
+        <th>Issuer</th>
+        <th>Total Supply</th>
+      </tr>
+    </table>
+
+    <h2>Raw Token List</h2>
+    <p>
+      For transparency, here is the raw list of known LibreTradingEcosystem tokens and their issuers:
+    </p>
+
+    <div class="code">
+# TokenList
+This is a (hopefully) complete List of all LibreTradingEcosystem Token
+
+Issuer: GAYCCWKECNGDRHYU3UTREBD2XLC3CUQN6FV22TKM4WCQER3IWR7TF5CY
+
+LIBRE
+
+Issuer: GCV4LXAU5PMYTIO7P5USPE2HUKLRCV2PPMULTOQSZESFLJLVL25W6D7F
+
+LIBERATOR (launched on Lumoscore)
+
+Issuer: GBVYKIM4QGW7NK3Q5S76GWMZMLAWYB6FB43JQ4J7ZOXHAA3LEZZGYHSD
+
+ReverseLibre
+xLUMOS
+LibreXLM
+yXLMFISH
+CountryToken
+yBASH
+LibreII
+yVELO
+ySHX
+yAFR
+TreehouseVI
+Libre100
+Libre777
+LiBrE
+yWALLY
+EVA
+LibreVaultX
+LibreXYZ
+yLibreXYZ
+yMEME
+yLMNR
+yAPpay
+yACT
+ySCROOGE
+yJOHN
+DicLibre
+LIBREBONER
+yPOYE
+yBLND
+LIBRE123
+xXTAR
+TestLibre
+LIBRA
+xLIBRE
+xKIWI
+yKIWI
+LIBRE0
+LumenLibre
+StellarLibre
+LIBREUSD
+yBRAINFROG
+yBEAR
+ySIG
+GetSomeLibre
+LibreVolume
+yZOMB
+yFRED
+yLMT
+yLUMOS
+maxBREAD
+200XLM
+yDWARF
+100XLM
+not100XLM
+yTATT
+yBBOI
+yGRACE
+Libre420
+
+Issuer: GBXN3ONPRC4TX4CQFYAOCMSFCZSUTR2U3GJWCVQ27Z2OKFWTW42HE2ZK
+
+MOONSHOT
+ANUSINU
+ShitCoin
+FruityDude
+YLM
+LOVE
+
+Issuer: GANIPXJRN6TSH7354OGYH4XS5P6L72MFTZ32BGHIOB2H6JD3MLJCPUXQ
+
+BuyMoreLibre
+LIBRE7
+LIBRE6
+LIBRE5
+LIBRE4
+LIBRE3
+LIBRE2
+LIBRE1
+yZONE
+xSTK
+NoLimitLibre
+ySTK
+yFUN
+BuyLibre
+aLibre
+1090
+HEDGE
+random
+yPYCB
+yDeCent
+yANGN
+yLIBRE
+zLIBRE
+
+Issuer: GD3ACA6FPINT4FDAA3YKR5M5OCDQ5NOQ24VW4TUMGKFENOLYO37UOD7Q
+
+NFTInu
+xyz
+anAfrican
+aDic
+SBEZZY
+212121212121
+
+Issuer: GAGG42ACMQ3454R7GB6JUAKU6OPT4EXPW4QWYKEKBVYDQJC3ELGW74AX
+
+1312
+NoLibreToken
+xLSPx
+HODL
+DiemLibre
+xxXLM
+
+Issuer: GBJEIA7DSCBQS37XH6NYBVDVF6DDYM33DJRP6PIQQQNBQLSHHCUKVIDS
+
+Das Kapital
+
+Issuer: GDID3VFXZ6BZXIBVCQXUYVUEOVPZHNBQUGDNZ43GIYD2F4QM2YBO4MF5
+
+LibreVault
+LIBRE
+Librequidity
+LibreToken
+    </div>
+
+    <p class="back"><a href="index.html">⬅ Back to Home</a></p>
+  </div>
+
+  <!-- Asset list configuration -->
   <script src="assets.js"></script>
 
   <script>
@@ -121,7 +320,7 @@
     assets.forEach(asset => {
       const row = document.createElement("tr");
 
-      // Token (mit Link)
+      // Token (with link)
       const tokenCell = document.createElement("td");
       tokenCell.className = "token";
       const link = document.createElement("a");
@@ -134,7 +333,7 @@
       issuerCell.className = "issuer";
       issuerCell.textContent = asset.issuer;
 
-      // Supply (live von Horizon)
+      // Supply (live from Horizon)
       const supplyCell = document.createElement("td");
       supplyCell.className = "supply";
       supplyCell.textContent = "Loading…";
@@ -155,7 +354,5 @@
       table.appendChild(row);
     });
   </script>
-
-  <p class="back"><a href="index.html">⬅ Back to Home</a></p>
 </body>
 </html>
