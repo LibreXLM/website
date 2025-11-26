@@ -24,20 +24,33 @@
     p {
       text-align: left;
       color: #ccc;
+      line-height: 1.6;
     }
-    .marquee {
-      background: #111;
-      border: 1px solid #444;
-      padding: 6px;
-      margin: 15px 0;
-      font-weight: bold;
-      color: #ffccff;
-      box-shadow: 0 0 10px #ff00ff;
+    ul {
+      padding-left: 20px;
     }
     .content {
       max-width: 1000px;
       margin: 0 auto;
-      line-height: 1.6;
+    }
+    .issuer-block {
+      margin: 20px 0;
+      padding: 12px;
+      background-color: #050505;
+      border: 1px solid #333;
+      box-shadow: 0 0 8px #111;
+    }
+    .issuer-heading {
+      font-weight: bold;
+      color: #ff66ff;
+      text-shadow: 0 0 6px #ff00ff;
+      word-break: break-all;
+      margin-bottom: 6px;
+    }
+    .token-item {
+      color: #00ffcc;
+      font-size: 13px;
+      margin: 2px 0;
     }
     .back {
       display: block;
@@ -53,67 +66,10 @@
       color: #00ffff;
       text-decoration: underline;
     }
-
-    /* Grouped token list styles */
-    .issuer-block {
-      margin: 20px 0;
-      padding: 12px;
-      background-color: #050505;
-      border: 1px solid #333;
-      box-shadow: 0 0 8px #222;
-    }
-    .issuer-link {
-      display: inline-block;
-      margin-bottom: 8px;
-      color: #ff66ff;
-      font-weight: bold;
-      text-decoration: none;
-      text-shadow: 0 0 6px #ff00ff;
-      word-break: break-all;
-    }
-    .issuer-link:hover {
-      color: #00ffff;
-      text-shadow: 0 0 8px #00ffff;
-      text-decoration: underline;
-    }
-    .issuer-block ul {
-      list-style-type: none;
-      padding-left: 10px;
-      margin: 0;
-    }
-    .issuer-block li {
-      margin: 4px 0;
-      font-size: 13px;
-    }
-    .token-link {
-      color: #00ffcc;
-      font-weight: bold;
-      text-decoration: none;
-      text-shadow: 0 0 4px #00ffcc;
-    }
-    .token-link:hover {
-      color: #ff6699;
-      text-shadow: 0 0 6px #ff6699;
-      text-decoration: underline;
-    }
-    .token-supply-label {
-      color: #aaaaaa;
-      margin-left: 6px;
-    }
-    .token-supply {
-      color: #ffd966;
-      font-family: monospace;
-      margin-left: 2px;
-    }
   </style>
 </head>
 <body>
   <h1>🌐 List of All Assets 🌐</h1>
-  <div class="marquee">
-    <marquee scrollamount="4">
-      🚀 LibreXLM Tokens ✦ Explore ✦ Trade ✦ Experiment ✦
-    </marquee>
-  </div>
 
   <div class="content">
     <p>
@@ -147,106 +103,58 @@
 
     <h2>Token List (Grouped by Issuer)</h2>
     <p>
-      Each issuer below is highlighted and links directly to the corresponding
-      <b>Stellar.Expert</b> account page. Each token name links to its
-      <b>Stellar.Expert asset page</b>. Supplies are fetched live from the Stellar network.
+      Below you find a simple list of all known LibreTradingEcosystem tokens, grouped by issuer.
+      Each issuer is highlighted, followed by the asset codes issued by that account.
     </p>
 
+    <!-- Hier wird die Liste per JavaScript eingefügt -->
     <div id="tokenList"></div>
 
     <p class="back"><a href="index.html">⬅ Back to Home</a></p>
   </div>
 
-  <!-- Asset list configuration -->
+  <!-- Datenquelle -->
   <script src="assets.js"></script>
 
   <script>
     const listContainer = document.getElementById("tokenList");
 
-    function formatNumber(num) {
-      return Number(num).toLocaleString("en-US", { maximumFractionDigits: 2 });
-    }
-
-    // Map "code:issuer" -> array of DOM nodes that should receive the supply value
-    const supplyNodes = {};
-
-    // Group assets by issuer
+    // Assets nach Issuer gruppieren
     const groupedByIssuer = {};
     assets.forEach(asset => {
       if (!groupedByIssuer[asset.issuer]) {
         groupedByIssuer[asset.issuer] = [];
       }
-      groupedByIssuer[asset.issuer].push(asset);
+      groupedByIssuer[asset.issuer].push(asset.code);
     });
 
-    // Build grouped token list with clickable issuer + token + inline supply
-    Object.entries(groupedByIssuer).forEach(([issuer, tokens]) => {
+    // Issuer sortieren (optional, für Übersichtlichkeit)
+    const issuers = Object.keys(groupedByIssuer).sort();
+
+    issuers.forEach(issuer => {
       const block = document.createElement("div");
       block.className = "issuer-block";
 
-      // Issuer link → Stellar.Expert account
-      const issuerHeader = document.createElement("div");
-      const issuerLink = document.createElement("a");
-      issuerLink.className = "issuer-link";
-      issuerLink.href = `https://stellar.expert/explorer/public/account/${issuer}`;
-      issuerLink.target = "_blank";
-      issuerLink.textContent = `Issuer: ${issuer}`;
-      issuerHeader.appendChild(issuerLink);
-      block.appendChild(issuerHeader);
+      const heading = document.createElement("div");
+      heading.className = "issuer-heading";
+      heading.textContent = "Issuer: " + issuer;
+      block.appendChild(heading);
 
       const ul = document.createElement("ul");
 
-      tokens.forEach(asset => {
+      // Token-Codes sortieren
+      const codes = groupedByIssuer[issuer].slice().sort();
+
+      codes.forEach(code => {
         const li = document.createElement("li");
+        li.className = "token-item";
+        li.textContent = code;
+        ul.appendChild(li);
+      });
 
-      <!-- Asset-Liste -->
-  <script src="assets.js"></script>
-
-  <script>
-    const table = document.getElementById("assetTable");
-
-    function formatNumber(num) {
-      return Number(num).toLocaleString("en-US", { maximumFractionDigits: 2 });
-    }
-
-    assets.forEach(asset => {
-      const row = document.createElement("tr");
-
-      // Token (mit Link)
-      const tokenCell = document.createElement("td");
-      tokenCell.className = "token";
-      const link = document.createElement("a");
-      link.href = `https://cleanshave.org/tool/asset-detail.html?code=${asset.code}&issuer=${asset.issuer}`;
-      link.textContent = asset.code;
-      tokenCell.appendChild(link);
-
-      // Issuer
-      const issuerCell = document.createElement("td");
-      issuerCell.className = "issuer";
-      issuerCell.textContent = asset.issuer;
-
-      // Supply (live von Horizon)
-      const supplyCell = document.createElement("td");
-      supplyCell.className = "supply";
-      supplyCell.textContent = "Loading…";
-      fetch(`https://horizon.stellar.org/assets?asset_code=${asset.code}&asset_issuer=${asset.issuer}`)
-        .then(r => r.json())
-        .then(d => {
-          if (d._embedded.records.length > 0) {
-            supplyCell.textContent = formatNumber(d._embedded.records[0].amount);
-          } else {
-            supplyCell.textContent = "n/a";
-          }
-        })
-        .catch(() => { supplyCell.textContent = "error"; });
-
-      row.appendChild(tokenCell);
-      row.appendChild(issuerCell);
-      row.appendChild(supplyCell);
-      table.appendChild(row);
+      block.appendChild(ul);
+      listContainer.appendChild(block);
     });
   </script>
-
-  <p class="back"><a href="index.html">⬅ Back to Home</a></p>
 </body>
 </html>
