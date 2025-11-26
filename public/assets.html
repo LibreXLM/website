@@ -25,50 +25,19 @@
       text-align: left;
       color: #ccc;
     }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 20px;
-      border: 2px solid magenta;
-      box-shadow: 0 0 12px magenta;
-    }
-    th {
-      background-color: #111;
-      color: #ffcc00;
-      padding: 10px;
-      text-align: left;
-      font-size: 14px;
-      border-bottom: 2px solid #ff00ff;
-      text-shadow: 0 0 5px #ff00ff;
-    }
-    td {
-      padding: 8px;
-      border-bottom: 1px dashed #333;
-      vertical-align: top;
-    }
-    tr:nth-child(even) {
-      background-color: #111;
-    }
-    .token a {
-      color: #00ffff;
+    .marquee {
+      background: #111;
+      border: 1px solid #444;
+      padding: 6px;
+      margin: 15px 0;
       font-weight: bold;
-      text-decoration: none;
-      text-shadow: 0 0 5px #00ffff;
+      color: #ffccff;
+      box-shadow: 0 0 10px #ff00ff;
     }
-    .token a:hover {
-      color: #ff6699;
-      text-shadow: 0 0 8px #ff6699;
-      text-decoration: underline;
-    }
-    .issuer {
-      color: #888;
-      font-size: 12px;
-      word-break: break-all;
-    }
-    .supply {
-      text-align: right;
-      font-family: monospace;
-      color: #ffd966;
+    .content {
+      max-width: 1000px;
+      margin: 0 auto;
+      line-height: 1.6;
     }
     .back {
       display: block;
@@ -83,20 +52,6 @@
     .back a:hover {
       color: #00ffff;
       text-decoration: underline;
-    }
-    .marquee {
-      background: #111;
-      border: 1px solid #444;
-      padding: 6px;
-      margin: 15px 0;
-      font-weight: bold;
-      color: #ffccff;
-      box-shadow: 0 0 10px #ff00ff;
-    }
-    .content {
-      max-width: 1000px;
-      margin: 0 auto;
-      line-height: 1.6;
     }
 
     /* Grouped token list styles */
@@ -127,12 +82,19 @@
       margin: 0;
     }
     .issuer-block li {
-      margin: 3px 0;
+      margin: 4px 0;
       font-size: 13px;
     }
-    .token-code {
+    .token-link {
       color: #00ffcc;
       font-weight: bold;
+      text-decoration: none;
+      text-shadow: 0 0 4px #00ffcc;
+    }
+    .token-link:hover {
+      color: #ff6699;
+      text-shadow: 0 0 6px #ff6699;
+      text-decoration: underline;
     }
     .token-supply-label {
       color: #aaaaaa;
@@ -183,25 +145,11 @@
       If you interact with these tokens, you do so at your own risk.
     </p>
 
-    <h2>Live Asset Overview</h2>
-    <p>
-      Each token in the table below links to its CleanShave detail page. Total supply values are
-      fetched live from the Stellar network (the same on-chain data that Stellar.Expert displays).
-    </p>
-
-    <table id="assetTable">
-      <tr>
-        <th>Token</th>
-        <th>Issuer</th>
-        <th>Total Supply</th>
-      </tr>
-    </table>
-
     <h2>Token List (Grouped by Issuer)</h2>
     <p>
-      Below you can see the same assets grouped by issuer. Each issuer is highlighted and links
-      directly to the corresponding <b>Stellar.Expert</b> account page. Supplies shown here are
-      the same live values used in the table above.
+      Each issuer below is highlighted and links directly to the corresponding
+      <b>Stellar.Expert</b> account page. Each token name links to its
+      <b>Stellar.Expert asset page</b>. Supplies are fetched live from the Stellar network.
     </p>
 
     <div id="tokenList"></div>
@@ -213,50 +161,16 @@
   <script src="assets.js"></script>
 
   <script>
-    const table = document.getElementById("assetTable");
     const listContainer = document.getElementById("tokenList");
 
     function formatNumber(num) {
       return Number(num).toLocaleString("en-US", { maximumFractionDigits: 2 });
     }
 
-    // Map from "code:issuer" -> array of DOM nodes that should receive the supply value
+    // Map "code:issuer" -> array of DOM nodes that should receive the supply value
     const supplyNodes = {};
 
-    // 1) Build the table using the global `assets` array from assets.js
-    assets.forEach(asset => {
-      const row = document.createElement("tr");
-
-      // Token (with link to CleanShave)
-      const tokenCell = document.createElement("td");
-      tokenCell.className = "token";
-      const link = document.createElement("a");
-      link.href = `https://cleanshave.org/tool/asset-detail.html?code=${asset.code}&issuer=${asset.issuer}`;
-      link.textContent = asset.code;
-      link.target = "_blank";
-      tokenCell.appendChild(link);
-
-      // Issuer (plain text in table)
-      const issuerCell = document.createElement("td");
-      issuerCell.className = "issuer";
-      issuerCell.textContent = asset.issuer;
-
-      // Supply cell
-      const supplyCell = document.createElement("td");
-      supplyCell.className = "supply";
-      supplyCell.textContent = "Loading…";
-
-      const key = `${asset.code}:${asset.issuer}`;
-      if (!supplyNodes[key]) supplyNodes[key] = [];
-      supplyNodes[key].push(supplyCell);
-
-      row.appendChild(tokenCell);
-      row.appendChild(issuerCell);
-      row.appendChild(supplyCell);
-      table.appendChild(row);
-    });
-
-    // 2) Group assets by issuer for the list
+    // Group assets by issuer
     const groupedByIssuer = {};
     assets.forEach(asset => {
       if (!groupedByIssuer[asset.issuer]) {
@@ -265,12 +179,12 @@
       groupedByIssuer[asset.issuer].push(asset);
     });
 
-    // 3) Build grouped token list with clickable issuer + inline supply
+    // Build grouped token list with clickable issuer + token + inline supply
     Object.entries(groupedByIssuer).forEach(([issuer, tokens]) => {
       const block = document.createElement("div");
       block.className = "issuer-block";
 
-      // Issuer link to Stellar.Expert
+      // Issuer link → Stellar.Expert account
       const issuerHeader = document.createElement("div");
       const issuerLink = document.createElement("a");
       issuerLink.className = "issuer-link";
@@ -285,9 +199,12 @@
       tokens.forEach(asset => {
         const li = document.createElement("li");
 
-        const codeSpan = document.createElement("span");
-        codeSpan.className = "token-code";
-        codeSpan.textContent = asset.code;
+        // Token link → Stellar.Expert asset page
+        const tokenA = document.createElement("a");
+        tokenA.className = "token-link";
+        tokenA.href = `https://stellar.expert/explorer/public/asset/${asset.code}-${asset.issuer}`;
+        tokenA.target = "_blank";
+        tokenA.textContent = asset.code;
 
         const labelSpan = document.createElement("span");
         labelSpan.className = "token-supply-label";
@@ -301,7 +218,7 @@
         if (!supplyNodes[key]) supplyNodes[key] = [];
         supplyNodes[key].push(supplySpan);
 
-        li.appendChild(codeSpan);
+        li.appendChild(tokenA);
         li.appendChild(labelSpan);
         li.appendChild(supplySpan);
         ul.appendChild(li);
@@ -311,10 +228,10 @@
       listContainer.appendChild(block);
     });
 
-    // 4) Fetch supply once per asset and update all linked DOM nodes (table + list)
+    // Fetch supply once per asset and update all linked DOM nodes
     assets.forEach(asset => {
       const key = `${asset.code}:${asset.issuer}`;
-      fetch(`https://horizon.stellar.org/assets?asset_code=${asset.code}&asset_issuer=${asset.issuer}`)
+      fetch(`https://horizon.stellar.org/assets?asset_code=${encodeURIComponent(asset.code)}&asset_issuer=${asset.issuer}`)
         .then(r => r.json())
         .then(d => {
           let text = "n/a";
