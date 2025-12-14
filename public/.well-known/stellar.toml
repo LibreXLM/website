@@ -19,6 +19,21 @@ email="librexlm@gmail.com"
 github="LibreXLM"
 
 [[CURRENCIES]]
+code = "DAWG"
+status = "live"
+issuer = "GBVYKIM4QGW7NK3Q5S76GWMZMLAWYB6FB43JQ4J7ZOXHAA3LEZZGYHSD"
+display_decimals = 7
+name = "DAWG Reserve Coin"
+desc = "DAWG is a reserve meme coin and store-of-value token in the LIBRE Trading Ecosystem. Each circulating DAWG is intended to be backed by at least 1 LIBRE held in a Treasury wallet for potential buybacks. New DAWGs are only released when the Treasury holds sufficient LIBRE reserves, and additional working capital (LP positions and other token pairs) is used to generate income, fund LIBRE burns, DAWG buybacks, and long-term Treasury growth. DAWG is experimental and carries all usual risks of crypto assets."
+conditions = "No ICO, no pre-sale, and no guaranteed returns. DAWG is an experimental, treasury-backed meme asset on the Stellar network. Holding DAWG does not represent a claim on LIBRE, the Treasury, or any legal entity. Users should do their own research and only participate with funds they can afford to lose."
+image = "DAWG.png"
+is_asset_anchored = true
+is_unlimited = false
+anchor_asset = "LIBRE"
+anchor_asset_type = "crypto"
+
+
+[[CURRENCIES]]
 code="ReverseLibre"
 status="live"
 issuer="GBVYKIM4QGW7NK3Q5S76GWMZMLAWYB6FB43JQ4J7ZOXHAA3LEZZGYHSD"
