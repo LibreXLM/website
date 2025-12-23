@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>DAWG – Reserve Meme Coin of the LIBRE Ecosystem</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Retro fonts (optional, same vibe as LIBRE site) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #090915;
+      --bg-panel: #101425;
+      --border: #5ff6ff;
+      --accent: #ffb2f5;
+      --accent-soft: rgba(255, 0, 180, .08);
+      --text-main: #e8f3ff;
+      --text-soft: #9fb3ca;
+      --highlight: #fff7a3;
+      --muted: #7a8898;
+      --danger: #ff6680;
+      --ok: #b2ffcb;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background: radial-gradient(circle at top, #171733 0, #050510 55%);
+      color: var(--text-main);
+      font-family: 'VT323', monospace;
+      font-size: 20px;
+    }
+
+    .page-wrap {
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: 16px;
+    }
+
+    .card {
+      background: linear-gradient(180deg, rgba(7,7,14,.95), rgba(10,12,24,.96));
+      border: 3px double var(--border);
+      box-shadow:
+        0 0 0 6px #231942,
+        0 0 16px 4px rgba(0, 255, 230, .18),
+        inset 0 0 24px 6px rgba(8, 12, 40, .9);
+      padding: 18px 18px 20px;
+      margin-top: 18px;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    .badge {
+      display: inline-block;
+      margin: 0 4px 6px;
+      padding: 3px 10px;
+      border: 2px solid var(--accent);
+      color: var(--accent);
+      font-family: 'Press Start 2P', system-ui, sans-serif;
+      font-size: 10px;
+      text-transform: uppercase;
+      background: var(--accent-soft);
+      letter-spacing: 0.08em;
+    }
+
+    h1 {
+      margin: 6px 0 0;
+      font-family: 'Press Start 2P', system-ui, sans-serif;
+      font-size: 20px;
+      color: var(--highlight);
+      text-shadow:
+        0 0 4px #f0ff93,
+        0 0 12px #5ff6ff;
+    }
+
+    .subtitle {
+      margin-top: 8px;
+      color: var(--text-soft);
+      font-size: 18px;
+    }
+
+    .grid {
+      display: grid;
+      gap: 16px;
+    }
+
+    @media (min-width: 768px) {
+      .grid-2 {
+        grid-template-columns: 3fr 2fr;
+      }
+      .grid-3 {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+
+    section h2 {
+      font-family: 'Press Start 2P', system-ui, sans-serif;
+      font-size: 13px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #b2ffcb;
+      margin: 0 0 12px;
+    }
+
+    p {
+      margin: 6px 0 8px;
+      color: var(--text-main);
+    }
+
+    .muted {
+      color: var(--muted);
+      font-size: 18px;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+      color: var(--ok);
+    }
+
+    /* Dashboard cards */
+    .metric-card {
+      background: rgba(6, 12, 30, .9);
+      border: 2px solid var(--border);
+      padding: 12px 12px 14px;
+      box-shadow:
+        0 0 10px rgba(0, 255, 230, .12),
+        inset 0 0 16px rgba(0,0,0,.6);
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .metric-label {
+      font-family: 'Press Start 2P', system-ui, sans-serif;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #ffd9b2;
+    }
+
+    .metric-value {
+      font-size: 28px;
+      line-height: 1.2;
+      color: var(--highlight);
+    }
+
+    .metric-hint {
+      font-size: 16px;
+      color: var(--text-soft);
+    }
+
+    .status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 14px;
+      padding: 3px 8px;
+      border-radius: 999px;
+      border: 1px solid var(--ok);
+      color: var(--ok);
+      background: rgba(0, 255, 180, .07);
+    }
+
+    .status-pill span {
+      font-size: 18px;
+    }
+
+    .note {
+      margin-top: 10px;
+      padding: 10px 12px;
+      border: 2px dashed var(--accent);
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-size: 18px;
+    }
+
+    .danger {
+      border-color: var(--danger);
+      color: var(--danger);
+    }
+
+    .data-row {
+      margin-top: 8px;
+      font-size: 18px;
+    }
+
+    .data-row code {
+      font-size: 16px;
+      background: rgba(0,0,0,.3);
+      padding: 2px 4px;
+      border-radius: 4px;
+    }
+
+    footer {
+      margin: 26px 0 12px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 16px;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="page-wrap">
+    <div class="card">
+      <header>
+        <div class="badge">$LIBRE Ecosystem</div>
+        <div class="badge">DAWG Reserve Meme Coin</div>
+        <h1>DAWG – Valor ex Motu</h1>
+        <div class="subtitle">
+          Experimental reserve-style meme coin &amp; store-of-value token on Stellar.
+        </div>
+      </header>
+
+      <section>
+        <h2>What is DAWG?</h2>
+        <p>
+          <strong>DAWG</strong> is an experimental <strong>reserve meme coin</strong> and
+          <strong>store-of-value (SoV)</strong> token being built inside the
+          <strong>LIBRE Trading Ecosystem</strong> on Stellar.
+          The core idea is simple:
+        </p>
+        <p>
+          <em>DAWG should be economically backed by LIBRE and a growing on-chain Treasury,
+          with the initial policy target being approximately
+          <strong>1 DAWG ≈ 1 LIBRE of backing</strong>.</em>
+        </p>
+        <p>
+          In practice this means that DAWG is sold only for LIBRE on the
+          <strong>Stellar DEX (SDEX)</strong>, and the LIBRE collected flows into a Treasury
+          that can be used for:
+        </p>
+        <ul>
+          <li>building &amp; supporting DAWG/LIBRE and DAWG/XLM liquidity,</li>
+          <li>strengthening the backing per DAWG over time,</li>
+          <li>and potentially burning LIBRE or DAWG as part of long-term policy.</li>
+        </ul>
+        <p>
+          <strong>Important:</strong> DAWG is a work-in-progress experimental design.
+          The exact tokenomics and long-term reserve rules are still being refined.
+          There is no guarantee of redemption, profit, or fixed price – only a
+          transparent attempt to build a meme-denominated reserve-style asset rooted
+          in LIBRE and the Stellar ecosystem.
+        </p>
+      </section>
+
+      <section>
+        <h2>Current State &amp; Distribution Principles</h2>
+        <p>
+          For now, new DAWG enters the market <strong>only</strong> through
+          <strong>limit sell offers against LIBRE on the SDEX</strong>.
+          There is no public sale in another currency and no presale priced in fiat or stablecoins.
+        </p>
+        <p>
+          As part of the early design, the goal is:
+        </p>
+        <ul>
+          <li>to keep DAWG’s max supply capped at <strong>5,000,000 DAWG</strong>,</li>
+          <li>to release supply gradually in small tranches,</li>
+          <li>and to only expand circulating supply when the Treasury backing is considered sufficient.</li>
+        </ul>
+        <p class="muted">
+          Everything here is subject to change based on actual on-chain behavior, community feedback,
+          and future smart-contract based implementations on Soroban.
+        </p>
+      </section>
+
+      <section>
+        <h2>DAWG Supply Dashboard (Live)</h2>
+
+        <div class="grid grid-3">
+          <!-- Max Supply -->
+          <div class="metric-card">
+            <div class="metric-label">Max Supply</div>
+            <div id="max-supply" class="metric-value">5,000,000</div>
+            <div class="metric-hint">Hard cap (planned) for total DAWG issuance.</div>
+          </div>
+
+          <!-- DAWG in LPs -->
+          <div class="metric-card">
+            <div class="metric-label">DAWG in LPs (Classic)</div>
+            <div id="lp-supply" class="metric-value">loading…</div>
+            <div class="metric-hint">
+              Estimated DAWG currently deployed in Stellar Classic liquidity pools.
+            </div>
+          </div>
+
+          <!-- Circulating (rough) -->
+          <div class="metric-card">
+            <div class="metric-label">Circulating (rough estimate)</div>
+            <div id="circ-supply" class="metric-value">170,000</div>
+            <div class="metric-hint">
+              Approx. DAWG currently exposed to the market
+              (based on DAWG sell/buy offers vs. LIBRE on SDEX).
+            </div>
+          </div>
+        </div>
+
+        <div class="note">
+          <strong>Note:</strong> All numbers are experimental and based on live on-chain data sources.
+          LP balances and circulating estimates can change at any time as new pools are created,
+          trades happen, or DAWG/LIBRE offers are updated.
+        </div>
+
+        <div class="data-row">
+          Data sources used:
+          <br />
+          • Asset &amp; LP detail: 
+          <code>https://cleanshave.org/tool/asset-detail.html?code=DAWG&amp;issuer=GBVYKIM4QGW7NK3Q5S76GWMZMLAWYB6FB43JQ4J7ZOXHAA3LEZZGYHSD</code>
+          <br />
+          • DAWG/LIBRE market (for circulating approximation):
+          <code>https://stellar.expert/explorer/public/asset/DAWG-GBVYKIM4QGW7NK3Q5S76GWMZMLAWYB6FB43JQ4J7ZOXHAA3LEZZGYHSD-1?filter=markets&amp;market=LIBRE-GAYCCWKECNGDRHYU3UTREBD2XLC3CUQN6FV22TKM4WCQER3IWR7TF5CY-2</code>
+        </div>
+      </section>
+
+      <section>
+        <h2>Disclaimer</h2>
+        <p class="muted">
+          DAWG is an experimental crypto asset.
+          There is <strong>no guarantee of a fixed 1:1 peg</strong> to LIBRE, and no promise
+          of redemption or profits. Any “backing” is an economic and treasury policy target,
+          not a legal claim. Always do your own research and never risk funds you cannot afford to lose.
+        </p>
+      </section>
+
+      <footer>
+        <div>DAWG – Reserve Meme Coin of the LIBRE Trading Ecosystem</div>
+        <div><small>“Valor ex Motu” – Value from Movement.</small></div>
+      </footer>
+    </div>
+  </div>
+
+  <script>
+    // --- Config ---
+    const MAX_SUPPLY = 5_000_000;
+    const ESTIMATED_CIRCULATING = 170_000; // based on current LIBRE-side orders
+
+    // You provided this URL as LP data source for DAWG.
+    // Assumption: it returns JSON with some structure including LP balances.
+    // In practice, you may need to open devtools, console.log(data) and adapt parsing below.
+    const ASSET_DETAIL_URL =
+      "https://cleanshave.org/tool/asset-detail.html?code=DAWG&issuer=GBVYKIM4QGW7NK3Q5S76GWMZMLAWYB6FB43JQ4J7ZOXHAA3LEZZGYHSD";
+
+    const maxSupplyEl = document.getElementById("max-supply");
+    const lpSupplyEl = document.getElementById("lp-supply");
+    const circSupplyEl = document.getElementById("circ-supply");
+
+    function formatNumber(x) {
+      return x.toLocaleString("en-US", {
+        minimumFractionDigits: 0,
+        maximumFractionDigits: 2
+      });
+    }
+
+    async function fetchDawgLpData() {
+      try {
+        const res = await fetch(ASSET_DETAIL_URL, { cache: "no-store" });
+
+        // If this endpoint returns HTML instead of JSON, this will throw.
+        // Then you can adjust manually to your actual data structure.
+        const data = await res.json();
+
+        console.log("DAWG asset detail (raw):", data);
+
+        // TODO: adapt this based on real API shape.
+        // Example if data has a field like data.liquidity.totalDawgInPools:
+        let dawgInLps = null;
+
+        if (data.liquidity && typeof data.liquidity.dawgInPools === "number") {
+          dawgInLps = data.liquidity.dawgInPools;
+        }
+
+        if (dawgInLps == null) {
+          // Fallback if structure is unknown:
+          lpSupplyEl.textContent = "n/a";
+          lpSupplyEl.style.color = "#ff6680";
+        } else {
+          lpSupplyEl.textContent = formatNumber(dawgInLps);
+        }
+      } catch (err) {
+        console.error("Failed to load DAWG LP data", err);
+        lpSupplyEl.textContent = "n/a";
+        lpSupplyEl.style.color = "#ff6680";
+      }
+    }
+
+    function initDashboard() {
+      maxSupplyEl.textContent = formatNumber(MAX_SUPPLY);
+      circSupplyEl.textContent = formatNumber(ESTIMATED_CIRCULATING);
+      lpSupplyEl.textContent = "loading…";
+      fetchDawgLpData();
+    }
+
+    document.addEventListener("DOMContentLoaded", initDashboard);
+  </script>
+</body>
+</html>
