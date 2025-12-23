@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <!-- Retro fonts (optional, same vibe as LIBRE site) -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="httpshttps://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
 
@@ -157,27 +157,12 @@
       font-size: 28px;
       line-height: 1.2;
       color: var(--highlight);
+      word-break: break-word;
     }
 
     .metric-hint {
       font-size: 16px;
       color: var(--text-soft);
-    }
-
-    .status-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-      font-size: 14px;
-      padding: 3px 8px;
-      border-radius: 999px;
-      border: 1px solid var(--ok);
-      color: var(--ok);
-      background: rgba(0, 255, 180, .07);
-    }
-
-    .status-pill span {
-      font-size: 18px;
     }
 
     .note {
@@ -187,11 +172,6 @@
       background: var(--accent-soft);
       color: var(--accent);
       font-size: 18px;
-    }
-
-    .danger {
-      border-color: var(--danger);
-      color: var(--danger);
     }
 
     .data-row {
@@ -212,7 +192,6 @@
       color: var(--muted);
       font-size: 16px;
     }
-
   </style>
 </head>
 <body>
@@ -233,50 +212,51 @@
           <strong>DAWG</strong> is an experimental <strong>reserve meme coin</strong> and
           <strong>store-of-value (SoV)</strong> token being built inside the
           <strong>LIBRE Trading Ecosystem</strong> on Stellar.
-          The core idea is simple:
         </p>
         <p>
-          <em>DAWG should be economically backed by LIBRE and a growing on-chain Treasury,
-          with the initial policy target being approximately
-          <strong>1 DAWG ≈ 1 LIBRE of backing</strong>.</em>
+          The core idea: DAWG is designed to be economically backed by a growing on-chain Treasury,
+          with the initial policy target of approximately
+          <strong>1 DAWG backed by 1 LIBRE</strong>.
+          Exact tokenomics, backing ratios and phase rules are still being refined and may evolve over time.
         </p>
         <p>
-          In practice this means that DAWG is sold only for LIBRE on the
-          <strong>Stellar DEX (SDEX)</strong>, and the LIBRE collected flows into a Treasury
-          that can be used for:
+          New DAWGs are currently sold <strong>only for LIBRE</strong> on the
+          <strong>Stellar DEX (SDEX)</strong>. LIBRE collected from DAWG sales
+          does <em>not</em> go to a private wallet; instead it is intended to be used for:
         </p>
         <ul>
-          <li>building &amp; supporting DAWG/LIBRE and DAWG/XLM liquidity,</li>
-          <li>strengthening the backing per DAWG over time,</li>
-          <li>and potentially burning LIBRE or DAWG as part of long-term policy.</li>
+          <li><strong>LIBRE burns</strong> – reducing LIBRE’s circulating supply over time,</li>
+          <li><strong>DAWG liquidity</strong> – seeding and deepening DAWG/LIBRE and other pools,</li>
+          <li><strong>Treasury liquidity</strong> – building a reserve that backs every circulating DAWG.</li>
         </ul>
         <p>
-          <strong>Important:</strong> DAWG is a work-in-progress experimental design.
-          The exact tokenomics and long-term reserve rules are still being refined.
-          There is no guarantee of redemption, profit, or fixed price – only a
-          transparent attempt to build a meme-denominated reserve-style asset rooted
-          in LIBRE and the Stellar ecosystem.
+          The <strong>DAWG max supply is capped at 5,000,000 tokens</strong>. The issuer account
+          <strong>will be locked</strong> once the initial setup and early Treasury configuration
+          are complete, so that minting and supply logic become as transparent and rule-based as possible.
         </p>
       </section>
 
       <section>
         <h2>Current State &amp; Distribution Principles</h2>
         <p>
-          For now, new DAWG enters the market <strong>only</strong> through
-          <strong>limit sell offers against LIBRE on the SDEX</strong>.
-          There is no public sale in another currency and no presale priced in fiat or stablecoins.
-        </p>
-        <p>
-          As part of the early design, the goal is:
+          At this stage, DAWG is in an early, highly experimental phase. The guiding principles are:
         </p>
         <ul>
-          <li>to keep DAWG’s max supply capped at <strong>5,000,000 DAWG</strong>,</li>
-          <li>to release supply gradually in small tranches,</li>
-          <li>and to only expand circulating supply when the Treasury backing is considered sufficient.</li>
+          <li><strong>Max Supply:</strong> 5,000,000 DAWG (no plans to increase this cap).</li>
+          <li>
+            <strong>Emission only against LIBRE:</strong> DAWGs are sold via SDEX sell orders
+            for LIBRE, in small tranches.
+          </li>
+          <li>
+            <strong>Treasury-first approach:</strong> new DAWG supply should only be released
+            when the Treasury holds sufficient LIBRE (and later other assets) to support
+            a targeted backing per DAWG.
+          </li>
         </ul>
         <p class="muted">
-          Everything here is subject to change based on actual on-chain behavior, community feedback,
-          and future smart-contract based implementations on Soroban.
+          DAWG does <strong>not</strong> promise a fixed redemption price, profit,
+          or guaranteed peg. The 1:1 LIBRE target is an economic policy goal for
+          the Treasury, not a legally guaranteed claim.
         </p>
       </section>
 
@@ -293,10 +273,10 @@
 
           <!-- DAWG in LPs -->
           <div class="metric-card">
-            <div class="metric-label">DAWG in LPs (Classic)</div>
+            <div class="metric-label">DAWG in Liquidity Pools</div>
             <div id="lp-supply" class="metric-value">loading…</div>
             <div class="metric-hint">
-              Estimated DAWG currently deployed in Stellar Classic liquidity pools.
+              Sum of DAWG reserves in Stellar liquidity pools (Horizon, Classic network).
             </div>
           </div>
 
@@ -305,22 +285,22 @@
             <div class="metric-label">Circulating (rough estimate)</div>
             <div id="circ-supply" class="metric-value">170,000</div>
             <div class="metric-hint">
-              Approx. DAWG currently exposed to the market
-              (based on DAWG sell/buy offers vs. LIBRE on SDEX).
+              Approximate DAWG currently exposed to the market,
+              based on DAWG &lt;=&gt; LIBRE orders on the SDEX (≈ 170k LIBRE buy-side at the moment).
             </div>
           </div>
         </div>
 
         <div class="note">
-          <strong>Note:</strong> All numbers are experimental and based on live on-chain data sources.
-          LP balances and circulating estimates can change at any time as new pools are created,
-          trades happen, or DAWG/LIBRE offers are updated.
+          <strong>Note:</strong> All numbers are experimental and based on live on-chain data.
+          Liquidity pool balances and circulating estimates can change at any time as new pools are created,
+          trades execute, or DAWG/LIBRE offers are updated. This dashboard is informational only.
         </div>
 
         <div class="data-row">
-          Data sources used:
+          Reference data sources:
           <br />
-          • Asset &amp; LP detail: 
+          • Asset &amp; LP overview:
           <code>https://cleanshave.org/tool/asset-detail.html?code=DAWG&amp;issuer=GBVYKIM4QGW7NK3Q5S76GWMZMLAWYB6FB43JQ4J7ZOXHAA3LEZZGYHSD</code>
           <br />
           • DAWG/LIBRE market (for circulating approximation):
@@ -331,10 +311,9 @@
       <section>
         <h2>Disclaimer</h2>
         <p class="muted">
-          DAWG is an experimental crypto asset.
-          There is <strong>no guarantee of a fixed 1:1 peg</strong> to LIBRE, and no promise
-          of redemption or profits. Any “backing” is an economic and treasury policy target,
-          not a legal claim. Always do your own research and never risk funds you cannot afford to lose.
+          DAWG is an experimental crypto asset. There is <strong>no guarantee of a fixed 1:1 peg</strong> to LIBRE,
+          and no promise of redemption, profit, or price stability. Any “backing” is an economic and treasury
+          policy target, not a legal claim. Always do your own research and never risk funds you cannot afford to lose.
         </p>
       </section>
 
@@ -346,18 +325,25 @@
   </div>
 
   <script>
-    // --- Config ---
+    // --- Basic config ---
     const MAX_SUPPLY = 5_000_000;
-    const ESTIMATED_CIRCULATING = 170_000; // based on current LIBRE-side orders
+    const ESTIMATED_CIRCULATING = 170_000; // Based on current DAWG/LIBRE orderbook context
 
-    // You provided this URL as LP data source for DAWG.
-    // Assumption: it returns JSON with some structure including LP balances.
-    // In practice, you may need to open devtools, console.log(data) and adapt parsing below.
-    const ASSET_DETAIL_URL =
-      "https://cleanshave.org/tool/asset-detail.html?code=DAWG&issuer=GBVYKIM4QGW7NK3Q5S76GWMZMLAWYB6FB43JQ4J7ZOXHAA3LEZZGYHSD";
+    // DAWG asset on Stellar Classic
+    const DAWG_CODE   = "DAWG";
+    const DAWG_ISSUER = "GBVYKIM4QGW7NK3Q5S76GWMZMLAWYB6FB43JQ4J7ZOXHAA3LEZZGYHSD";
+
+    // Horizon endpoint to discover all liquidity pools that include DAWG as one of the reserves.
+    // Docs: GET /liquidity_pools?reserves={assetA},{assetB}
+    // For a single asset, you can query reserves=DAWG:ISSUER and sum its share.
+    const HORIZON_LP_URL = (() => {
+      const reservesParam = encodeURIComponent(DAWG_CODE + ":" + DAWG_ISSUER);
+      // limit=200 to be safe if many pools exist
+      return "https://horizon.stellar.org/liquidity_pools?reserves=" + reservesParam + "&limit=200";
+    })();
 
     const maxSupplyEl = document.getElementById("max-supply");
-    const lpSupplyEl = document.getElementById("lp-supply");
+    const lpSupplyEl  = document.getElementById("lp-supply");
     const circSupplyEl = document.getElementById("circ-supply");
 
     function formatNumber(x) {
@@ -367,33 +353,56 @@
       });
     }
 
-    async function fetchDawgLpData() {
+    async function fetchDawgLpFromHorizon() {
       try {
-        const res = await fetch(ASSET_DETAIL_URL, { cache: "no-store" });
-
-        // If this endpoint returns HTML instead of JSON, this will throw.
-        // Then you can adjust manually to your actual data structure.
+        const res = await fetch(HORIZON_LP_URL, { cache: "no-store" });
+        if (!res.ok) {
+          throw new Error("HTTP " + res.status);
+        }
         const data = await res.json();
 
-        console.log("DAWG asset detail (raw):", data);
+        // Horizon format (simplified):
+        // {
+        //   "_embedded": {
+        //     "records": [
+        //       {
+        //         "reserves": [
+        //            { "asset": "native", "amount": "..." },
+        //            { "asset": "credit_alphanum4", "asset_code": "DAWG", "asset_issuer": "...", "amount": "..." }
+        //         ],
+        //         ...
+        //       },
+        //       ...
+        //     ]
+        //   }
+        // }
+        let totalDawgInPools = 0;
 
-        // TODO: adapt this based on real API shape.
-        // Example if data has a field like data.liquidity.totalDawgInPools:
-        let dawgInLps = null;
-
-        if (data.liquidity && typeof data.liquidity.dawgInPools === "number") {
-          dawgInLps = data.liquidity.dawgInPools;
+        if (data && data._embedded && Array.isArray(data._embedded.records)) {
+          for (const pool of data._embedded.records) {
+            if (!Array.isArray(pool.reserves)) continue;
+            for (const r of pool.reserves) {
+              if (
+                r.asset_code === DAWG_CODE &&
+                r.asset_issuer === DAWG_ISSUER &&
+                typeof r.amount === "string"
+              ) {
+                const amt = parseFloat(r.amount);
+                if (!Number.isNaN(amt)) {
+                  totalDawgInPools += amt;
+                }
+              }
+            }
+          }
         }
 
-        if (dawgInLps == null) {
-          // Fallback if structure is unknown:
-          lpSupplyEl.textContent = "n/a";
-          lpSupplyEl.style.color = "#ff6680";
+        if (totalDawgInPools === 0) {
+          lpSupplyEl.textContent = "0";
         } else {
-          lpSupplyEl.textContent = formatNumber(dawgInLps);
+          lpSupplyEl.textContent = formatNumber(totalDawgInPools);
         }
       } catch (err) {
-        console.error("Failed to load DAWG LP data", err);
+        console.error("Failed to load DAWG LP data from Horizon", err);
         lpSupplyEl.textContent = "n/a";
         lpSupplyEl.style.color = "#ff6680";
       }
@@ -403,7 +412,8 @@
       maxSupplyEl.textContent = formatNumber(MAX_SUPPLY);
       circSupplyEl.textContent = formatNumber(ESTIMATED_CIRCULATING);
       lpSupplyEl.textContent = "loading…";
-      fetchDawgLpData();
+
+      fetchDawgLpFromHorizon();
     }
 
     document.addEventListener("DOMContentLoaded", initDashboard);
