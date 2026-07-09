@@ -47,6 +47,159 @@ is_unlimited = false
 anchor_asset = "LIBRE"
 anchor_asset_type = "crypto"
 
+[[CURRENCIES]]
+code="ManyMonies"
+status="live"
+issuer="GBVYKIM4QGW7NK3Q5S76GWMZMLAWYB6FB43JQ4J7ZOXHAA3LEZZGYHSD"
+display_decimals=7
+name="ManyMonies"
+desc="This token is a symbol of programmable freedom, driven by motion and autonomy in crypto markets. It is part of the LibreTradingEcosystem, where LIBRE functions as the central asset. The goal of the system is to create value through a network of interconnected tokens that trade continuously and generate fees, forming a self-sustaining experimental economy on the Stellar blockchain."
+conditions="Libre assets are minted without centralized oversight. Value emerges from participation and velocity, not promises. This token is part of an open-ended experiment and should not be considered investment advice or a financial product."
+image="https://librequidity.org/LIBRE.png"
+is_asset_anchored=false
+is_unlimited=true
+anchor_asset="ManyMonies"
+anchor_asset_type="crypto"
+
+[[CURRENCIES]]
+code="TRUMP"
+status="live"
+issuer="GBVYKIM4QGW7NK3Q5S76GWMZMLAWYB6FB43JQ4J7ZOXHAA3LEZZGYHSD"
+display_decimals=7
+name="TRUMP"
+desc="This token is a symbol of programmable freedom, driven by motion and autonomy in crypto markets. It is part of the LibreTradingEcosystem, where LIBRE functions as the central asset. The goal of the system is to create value through a network of interconnected tokens that trade continuously and generate fees, forming a self-sustaining experimental economy on the Stellar blockchain."
+conditions="Libre assets are minted without centralized oversight. Value emerges from participation and velocity, not promises. This token is part of an open-ended experiment and should not be considered investment advice or a financial product."
+image="https://librequidity.org/LIBRE.png"
+is_asset_anchored=false
+is_unlimited=true
+anchor_asset="TRUMP"
+anchor_asset_type="crypto"
+
+[[CURRENCIES]]
+code="Pepe"
+status="live"
+issuer="GBVYKIM4QGW7NK3Q5S76GWMZMLAWYB6FB43JQ4J7ZOXHAA3LEZZGYHSD"
+display_decimals=7
+name="Pepe"
+desc="This token is a symbol of programmable freedom, driven by motion and autonomy in crypto markets. It is part of the LibreTradingEcosystem, where LIBRE functions as the central asset. The goal of the system is to create value through a network of interconnected tokens that trade continuously and generate fees, forming a self-sustaining experimental economy on the Stellar blockchain."
+conditions="Libre assets are minted without centralized oversight. Value emerges from participation and velocity, not promises. This token is part of an open-ended experiment and should not be considered investment advice or a financial product."
+image="https://librequidity.org/LIBRE.png"
+is_asset_anchored=false
+is_unlimited=true
+anchor_asset="Pepe"
+anchor_asset_type="crypto"
+
+[[CURRENCIES]]
+code="ShibaInu"
+status="live"
+issuer="GBVYKIM4QGW7NK3Q5S76GWMZMLAWYB6FB43JQ4J7ZOXHAA3LEZZGYHSD"
+display_decimals=7
+name="ShibaInu"
+desc="This token is a symbol of programmable freedom, driven by motion and autonomy in crypto markets. It is part of the LibreTradingEcosystem, where LIBRE functions as the central asset. The goal of the system is to create value through a network of interconnected tokens that trade continuously and generate fees, forming a self-sustaining experimental economy on the Stellar blockchain."
+conditions="Libre assets are minted without centralized oversight. Value emerges from participation and velocity, not promises. This token is part of an open-ended experiment and should not be considered investment advice or a financial product."
+image="https://librequidity.org/LIBRE.png"
+is_asset_anchored=false
+is_unlimited=true
+anchor_asset="ShibaInu"
+anchor_asset_type="crypto"
+
+[[CURRENCIES]]
+code="67x"
+status="live"
+issuer="GBVYKIM4QGW7NK3Q5S76GWMZMLAWYB6FB43JQ4J7ZOXHAA3LEZZGYHSD"
+display_decimals=7
+name="67x"
+desc="This token is a symbol of programmable freedom, driven by motion and autonomy in crypto markets. It is part of the LibreTradingEcosystem, where LIBRE functions as the central asset. The goal of the system is to create value through a network of interconnected tokens that trade continuously and generate fees, forming a self-sustaining experimental economy on the Stellar blockchain."
+conditions="Libre assets are minted without centralized oversight. Value emerges from participation and velocity, not promises. This token is part of an open-ended experiment and should not be considered investment advice or a financial product."
+image="https://librequidity.org/LIBRE.png"
+is_asset_anchored=false
+is_unlimited=true
+anchor_asset="67x"
+anchor_asset_type="crypto"
+
+[[CURRENCIES]]
+code="Spinhx"
+status="live"
+issuer="GBVYKIM4QGW7NK3Q5S76GWMZMLAWYB6FB43JQ4J7ZOXHAA3LEZZGYHSD"
+display_decimals=7
+name="Spinhx"
+desc="This token is a symbol of programmable freedom, driven by motion and autonomy in crypto markets. It is part of the LibreTradingEcosystem, where LIBRE functions as the central asset. The goal of the system is to create value through a network of interconnected tokens that trade continuously and generate fees, forming a self-sustaining experimental economy on the Stellar blockchain."
+conditions="Libre assets are minted without centralized oversight. Value emerges from participation and velocity, not promises. This token is part of an open-ended experiment and should not be considered investment advice or a financial product."
+image="https://librequidity.org/LIBRE.png"
+is_asset_anchored=false
+is_unlimited=true
+anchor_asset="Spinhx"
+anchor_asset_type="crypto"
+
+[[CURRENCIES]]
+code="yLIBERATOR"
+status="live"
+issuer="GBVYKIM4QGW7NK3Q5S76GWMZMLAWYB6FB43JQ4J7ZOXHAA3LEZZGYHSD"
+display_decimals=7
+name="yLIBERATOR"
+desc="This token is a symbol of programmable freedom, driven by motion and autonomy in crypto markets. It is part of the LibreTradingEcosystem, where LIBRE functions as the central asset. The goal of the system is to create value through a network of interconnected tokens that trade continuously and generate fees, forming a self-sustaining experimental economy on the Stellar blockchain."
+conditions="Libre assets are minted without centralized oversight. Value emerges from participation and velocity, not promises. This token is part of an open-ended experiment and should not be considered investment advice or a financial product."
+image="https://librequidity.org/LIBRE.png"
+is_asset_anchored=false
+is_unlimited=true
+anchor_asset="yLIBERATOR"
+anchor_asset_type="crypto"
+
+[[CURRENCIES]]
+code="yYBXy"
+status="live"
+issuer="GBVYKIM4QGW7NK3Q5S76GWMZMLAWYB6FB43JQ4J7ZOXHAA3LEZZGYHSD"
+display_decimals=7
+name="yYBXy"
+desc="This token is a symbol of programmable freedom, driven by motion and autonomy in crypto markets. It is part of the LibreTradingEcosystem, where LIBRE functions as the central asset. The goal of the system is to create value through a network of interconnected tokens that trade continuously and generate fees, forming a self-sustaining experimental economy on the Stellar blockchain."
+conditions="Libre assets are minted without centralized oversight. Value emerges from participation and velocity, not promises. This token is part of an open-ended experiment and should not be considered investment advice or a financial product."
+image="https://librequidity.org/LIBRE.png"
+is_asset_anchored=false
+is_unlimited=true
+anchor_asset="yYBXy"
+anchor_asset_type="crypto"
+
+[[CURRENCIES]]
+code="yLSP"
+status="live"
+issuer="GBVYKIM4QGW7NK3Q5S76GWMZMLAWYB6FB43JQ4J7ZOXHAA3LEZZGYHSD"
+display_decimals=7
+name="yLSP"
+desc="This token is a symbol of programmable freedom, driven by motion and autonomy in crypto markets. It is part of the LibreTradingEcosystem, where LIBRE functions as the central asset. The goal of the system is to create value through a network of interconnected tokens that trade continuously and generate fees, forming a self-sustaining experimental economy on the Stellar blockchain."
+conditions="Libre assets are minted without centralized oversight. Value emerges from participation and velocity, not promises. This token is part of an open-ended experiment and should not be considered investment advice or a financial product."
+image="https://librequidity.org/LIBRE.png"
+is_asset_anchored=false
+is_unlimited=true
+anchor_asset="yLSP"
+anchor_asset_type="crypto"
+
+[[CURRENCIES]]
+code="yVelo"
+status="live"
+issuer="GBVYKIM4QGW7NK3Q5S76GWMZMLAWYB6FB43JQ4J7ZOXHAA3LEZZGYHSD"
+display_decimals=7
+name="yVelo"
+desc="This token is a symbol of programmable freedom, driven by motion and autonomy in crypto markets. It is part of the LibreTradingEcosystem, where LIBRE functions as the central asset. The goal of the system is to create value through a network of interconnected tokens that trade continuously and generate fees, forming a self-sustaining experimental economy on the Stellar blockchain."
+conditions="Libre assets are minted without centralized oversight. Value emerges from participation and velocity, not promises. This token is part of an open-ended experiment and should not be considered investment advice or a financial product."
+image="https://librequidity.org/LIBRE.png"
+is_asset_anchored=false
+is_unlimited=true
+anchor_asset="yVelo"
+anchor_asset_type="crypto"
+
+[[CURRENCIES]]
+code="LIBRO"
+status="live"
+issuer="GBVYKIM4QGW7NK3Q5S76GWMZMLAWYB6FB43JQ4J7ZOXHAA3LEZZGYHSD"
+display_decimals=7
+name="LIBRO"
+desc="This token is a symbol of programmable freedom, driven by motion and autonomy in crypto markets. It is part of the LibreTradingEcosystem, where LIBRE functions as the central asset. The goal of the system is to create value through a network of interconnected tokens that trade continuously and generate fees, forming a self-sustaining experimental economy on the Stellar blockchain."
+conditions="Libre assets are minted without centralized oversight. Value emerges from participation and velocity, not promises. This token is part of an open-ended experiment and should not be considered investment advice or a financial product."
+image="https://librequidity.org/LIBRE.png"
+is_asset_anchored=false
+is_unlimited=true
+anchor_asset="LIBRO"
+anchor_asset_type="crypto"
 
 [[CURRENCIES]]
 code="ReverseLibre"
