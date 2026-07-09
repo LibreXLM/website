@@ -1,117 +1,151 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>$LIBRE – LibreTradingEcosystem</title>
-  <meta name="description" content="LIBRE: a personal trading experiment on Stellar. Begun 2023-06-12. Activity-driven value via liquidity pools, burn, and a web of personal tokens." />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>$LIBRE — the main token of the Libre Trading Ecosystem</title>
+  <meta name="description" content="LIBRE is the hub of a system of personal tokens on Stellar. Constant trading fees and a shrinking supply are designed to create upward pressure on value over time.">
+  <meta name="theme-color" content="#1a0033">
+  <link rel="icon" href="LIBRE.png">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="$LIBRE — the main token of the Libre Trading Ecosystem">
+  <meta property="og:description" content="LIBRE is the hub of a system of personal tokens on Stellar. Constant trading fees and a shrinking supply are designed to create upward pressure on value over time.">
+  <meta property="og:image" content="https://librequidity.org/LIBRE.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://librequidity.org/LIBRE.png">
   <style>
-    html, body { height: 100%; }
-    body {
-      margin: 0;
-      background: #101018 url('data:image/svg+xml;utf8,\
-        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40">\
-          <rect width="40" height="40" fill="%23101018"/>\
-          <circle cx="6" cy="6" r="1" fill="%23b2f5ff"/>\
-          <circle cx="20" cy="18" r="1" fill="%23ffb2f5"/>\
-          <circle cx="30" cy="10" r="1" fill="%23b2ffcb"/>\
-          <circle cx="14" cy="30" r="1" fill="%23ffd9b2"/>\
-        </svg>') repeat;
-      color: #e8f3ff;
-      font-family: 'VT323', system-ui, monospace;
-      font-size: 22px;
-      line-height: 1.4;
-    }
-
-    .container {
-      max-width: 980px;
-      margin: 0 auto;
-      padding: 16px;
-      border: 3px double #5ff6ff;
-      box-shadow: 0 0 0 6px #231942, 0 0 20px 6px rgba(111, 0, 255, 0.25) inset;
-      background: linear-gradient(180deg, rgba(7,7,12,0.95), rgba(12,12,20,0.95));
-    }
-
-    header { text-align: center; margin-bottom: 20px; }
-    .logo-row { display: flex; justify-content: center; gap: 8px; }
-    .badge {
-      padding: 2px 8px; border: 2px solid #ff9dfb; color: #ff9dfb; font-family: 'Press Start 2P'; font-size: 10px;
-      text-transform: uppercase; background: rgba(255,0,230,0.08);
-    }
-    h1 {
-      font-family: 'Press Start 2P'; font-size: 20px; color: #fff7a3;
-      text-shadow: 0 0 6px #f0ff93, 0 0 16px #70fff9; margin: 10px 0;
-    }
-    .marquee { margin: 6px auto 14px; border: 2px dashed #87f0ff; padding: 6px; background: rgba(15,25,35,0.6);
-      overflow: hidden; white-space: nowrap; position: relative; height: 28px; font-family: 'Press Start 2P'; font-size: 10px; letter-spacing: 1px; color: #b2ffcb; }
-    .marquee span { position: absolute; width: max-content; animation: scroll 18s linear infinite; }
-    @keyframes scroll { from { left: 100%; } to { left: -100%; } }
-
-    .content { padding: 10px 0; }
-    .content p { margin: 0 0 12px; }
-
-    .factbar { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin: 16px 0; }
-    .pill { border: 1px solid #ffd9b2; padding: 6px 10px; background: rgba(30,22,10,0.3); font-family: 'Press Start 2P'; font-size: 10px; }
-
-    footer { margin-top: 28px; text-align: center; color: #9cb3c6; font-size: 18px; }
-    footer small { display: block; margin-top: 6px; color: #6f87a0; }
-    .social { margin-top: 10px; font-family: 'Press Start 2P'; font-size: 10px; }
-    .social a { margin: 0 8px; color: #87f0ff; text-decoration: none; }
-    .social a:hover { color: #fff7a3; }
-    .blink { animation: blink 1.2s steps(1,end) infinite; }
-    @keyframes blink { 50% { opacity: 0; } }
-  </style>
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap');
+:root{
+  --ink:#1a0033; --cyan:#00fff7; --pink:#ff2e88; --pink-soft:#ff8af0;
+  --violet:#cdb6ff; --line:rgba(0,255,247,.4); --pixel:'Press Start 2P',monospace;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0; min-height:100vh; overflow-x:hidden; color:#fff; line-height:1.7;
+  font-family:"Trebuchet MS","Segoe UI",sans-serif;
+  background:linear-gradient(180deg,#1a0033 0%,#3a0066 38%,#7a1f8f 60%,#ff2e88 100%) fixed;
+}
+body::before{
+  content:""; position:fixed; top:9%; left:50%; transform:translateX(-50%);
+  width:260px; height:260px; border-radius:50%; z-index:0; pointer-events:none;
+  background:linear-gradient(180deg,#fff200 0%,#ff8a00 45%,#ff2e88 100%);
+  box-shadow:0 0 90px 20px rgba(255,46,136,.45);
+}
+body::after{
+  content:""; position:fixed; left:-25%; right:-25%; bottom:0; height:40vh;
+  z-index:0; pointer-events:none;
+  background-image:linear-gradient(90deg,rgba(0,255,247,.5) 1px,transparent 1px),
+                   linear-gradient(0deg,rgba(0,255,247,.5) 1px,transparent 1px);
+  background-size:44px 44px; transform:perspective(320px) rotateX(70deg);
+  animation:flow 1.4s linear infinite;
+}
+@keyframes flow{to{background-position:0 44px}}
+.wrap{position:relative; z-index:2; max-width:840px; margin:0 auto; padding:40px 22px 46vh}
+.eyebrow{text-align:center; font-family:var(--pixel); font-size:11px; letter-spacing:3px;
+  color:var(--cyan); text-transform:uppercase; margin:0 0 14px}
+.title{
+  text-align:center; font-size:64px; line-height:.95; font-weight:bold; letter-spacing:2px; margin:0;
+  background:linear-gradient(180deg,#fff 0%,#ffd6f5 40%,#00fff7 100%);
+  -webkit-background-clip:text; background-clip:text; color:transparent;
+  text-shadow:0 0 28px rgba(0,255,247,.4);
+}
+.title.sm{font-size:44px}
+.tag{text-align:center; color:var(--pink-soft); letter-spacing:3px; font-size:18px; margin:10px 0 26px}
+.nav{display:flex; flex-wrap:wrap; gap:10px; justify-content:center; margin:0 0 26px}
+.nav a{color:var(--cyan); text-decoration:none; padding:9px 15px; font-size:13px; letter-spacing:1px;
+  border:1px solid var(--cyan); border-radius:2px; background:rgba(0,255,247,.06); transition:.12s}
+.nav a:hover{background:var(--cyan); color:var(--ink)}
+.nav a.active{background:var(--pink); border-color:var(--pink); color:#fff}
+.ticker{border-top:1px solid rgba(255,255,255,.3); border-bottom:1px solid rgba(255,255,255,.3);
+  overflow:hidden; white-space:nowrap; margin:0 0 26px; padding:8px 0; color:#ffd6f5; font-size:13px; letter-spacing:2px}
+.ticker span{display:inline-block; padding-left:100%; animation:tick 18s linear infinite}
+@keyframes tick{to{transform:translateX(-100%)}}
+.card{background:rgba(26,0,51,.55); border:1px solid var(--line); border-radius:6px;
+  padding:22px 26px; margin:0 0 22px; backdrop-filter:blur(2px)}
+.card h2{color:var(--cyan); margin:0 0 12px; font-size:22px}
+.card h3{color:var(--pink-soft); margin:18px 0 6px; font-size:17px}
+.card b,.card strong{color:var(--cyan)}
+h2.section{font-family:var(--pixel); font-size:15px; color:var(--cyan); letter-spacing:1px;
+  margin:34px 0 6px; text-align:center}
+.divider{border:0; height:1px; background:linear-gradient(90deg,transparent,var(--pink),transparent); margin:22px 0}
+.lead{font-size:19px}
+a{color:var(--pink-soft)} a:hover{color:#fff}
+.stats{display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:12px; margin:0 0 22px}
+.stat{background:rgba(0,255,247,.06); border:1px solid var(--line); border-radius:6px; padding:16px}
+.stat .k{display:block; font-family:var(--pixel); font-size:9px; letter-spacing:1px; color:var(--violet); text-transform:uppercase}
+.stat .v{display:block; font-size:26px; font-weight:bold; color:var(--cyan); margin-top:8px; word-break:break-word}
+.step{display:flex; gap:16px; background:rgba(26,0,51,.55); border:1px solid var(--line);
+  border-radius:6px; padding:18px 20px; margin:0 0 16px}
+.step .n{flex:none; font-family:var(--pixel); font-size:20px; color:var(--pink);
+  text-shadow:0 0 12px var(--pink); width:38px}
+.step h3{margin:0 0 6px; color:var(--cyan); font-size:18px}
+.step p{margin:0}
+.btn{display:inline-block; padding:11px 20px; margin:6px 6px 0 0; font-size:15px; letter-spacing:1px;
+  text-decoration:none; color:var(--ink); font-weight:bold; background:var(--cyan); border-radius:3px; border:1px solid var(--cyan)}
+.btn.ghost{background:transparent; color:var(--cyan)}
+.btn:hover{background:var(--pink-soft); border-color:var(--pink-soft); color:var(--ink)}
+table{width:100%; border-collapse:collapse; margin:10px 0; font-size:14px}
+th,td{text-align:left; padding:8px 10px; border-bottom:1px solid rgba(0,255,247,.18)}
+th{font-family:var(--pixel); font-size:9px; letter-spacing:1px; color:var(--cyan); text-transform:uppercase}
+tfoot td{font-weight:bold; color:var(--pink-soft); border-top:1px solid var(--line)}
+.addr{font-family:'VT323',monospace; font-size:16px; word-break:break-all}
+.disclaimer{border:1px dashed var(--pink-soft); background:rgba(255,46,136,.08);
+  border-radius:6px; padding:16px 20px; color:#ffd6f5; font-size:15px; margin:22px 0}
+.hub{display:flex; flex-wrap:wrap; align-items:center; justify-content:center; gap:14px; margin:22px 0}
+.hub .node{border:1px solid var(--line); background:rgba(0,255,247,.06); border-radius:6px;
+  padding:10px 14px; font-size:13px; color:#fff}
+.hub .core{border-color:var(--pink); background:rgba(255,46,136,.15); color:#fff; font-weight:bold;
+  box-shadow:0 0 18px rgba(255,46,136,.4)}
+.hub .arrow{color:var(--cyan); font-size:20px}
+.footer{position:relative; z-index:2; text-align:center; font-size:13px; color:var(--violet);
+  letter-spacing:1px; margin-top:26px}
+.footer a{color:var(--cyan); text-decoration:none; margin:0 8px}
+.footer a:hover{color:#fff}
+.blink{font-family:'VT323',monospace; color:var(--cyan)}
+.blink b{animation:bl 1s steps(2,start) infinite}
+@keyframes bl{to{opacity:0}}
+@media (max-width:560px){.title{font-size:44px}.title.sm{font-size:32px}}
+@media (prefers-reduced-motion:reduce){body::after,.ticker span,.blink b{animation:none}}
+</style>
 </head>
 <body>
-  <div class="container">
-    <header>
-      <div class="logo-row">
-        <div class="badge">LibreTradingEcosystem</div>
-        <div class="badge">LIBRE</div>
-      </div>
-      <h1>$LIBRE</h1>
-      <div class="marquee"><span>Personal Trading Experiment • Value from Activity • Core of the LTE • Built on Stellar</span></div>
-    </header>
-
-    <div class="content">
-      <p>
-        LIBRE began on June 12th, 2023 as a personal experiment, not as a conventional investment vehicle. The idea was never to create a token that promises stability or profits, but rather to test whether value can emerge simply from the constant flow of trades. Inspired by the Stellardrones project <a href="https://cleanshave.org/alice/" target="_blank">Alice</a>, LIBRE follows the intuition that liquidity pools themselves are engines of value. Trading fees, arbitrage routes, and the ceaseless movement of tokens create a form of activity-based economy, where worth is generated not from scarcity or speculation alone, but from circulation itself.
-      </p>
-      <p>
-        At the center of the LibreTradingEcosystem, LIBRE has become a kind of hub around which many other tokens orbit. Each personal token carries its own liquidity composition, its own risk profile, and its own set of intentions. LIBRE is designed to interact with all of them. The immediate goal is to maximize trading activity and to weave together a dense network of pools that keeps tokens in motion. LIBRE now connects to more than 750 liquidity pools on Stellar, which makes it one of the most frequently traded assets on the network.
-      </p>
-      <p>
-        The surrounding landscape is intentionally eclectic. Many of the tokens that link to LIBRE are small experiments, fragile projects, or playful creations. In this sense, LIBRE is in conversation with other personal trading tokens such as AIus, SVR, BASH, LMT, or GQX — each pursuing its own interpretation of what such an experiment can be. Together they map a field of decentralized tinkering where finance, engineering, and art overlap. By adding more strong liquidity over time — assets like XLM, AFR, SHX, ACT, or USDC — the web of high-quality pools expands, arbitrage routes multiply, and the broader structure gains resilience even in the presence of weaker links.
-      </p>
-      <p>
-        LIBRE evolves through mechanisms meant to test durability. A <a href="supply.html">burn process</a> gradually reduces supply,
- and additional rewards for early liquidity providers are available until the third anniversary on June 12th, 2026. Beyond that point, the system is expected to run on activity alone. The open question is whether a network effect of hundreds of interconnected pools can sustain momentum without external incentives.
-      </p>
-      <p>
-        Participation is straightforward. Anyone can trade LIBRE, open new pools, or launch a personal token that links into the ecosystem. A step-by-step guide for issuing a personal token and connecting it to LIBRE is available
-<a href="Tutorial.html">here</a>. If you decide to buy LIBRE, my hope is that you build with it — fold it into your own trading system or attach it to a project you believe in.
-
-      </p>
+  <div class="wrap">
+    <p class="eyebrow">the main token</p>
+    <h1 class="title">LIBRE</h1>
+    <p class="tag">the hub of the ecosystem</p>
+    <nav class="nav">
+      <a href="index.html">home</a>
+      <a href="libre.html" class="active">libre</a>
+      <a href="system.html">system</a>
+      <a href="create-token.html">create a token</a>
+      <a href="supply.html">supply</a>
+    </nav>
+    <div class="stats">
+      <div class="stat"><span class="k">network</span><span class="v">Stellar</span></div>
+      <div class="stat"><span class="k">role</span><span class="v">Hub</span></div>
+      <div class="stat"><span class="k">since</span><span class="v">2023</span></div>
+      <div class="stat"><span class="k">mechanics</span><span class="v">Fees + Burn</span></div>
     </div>
 
-    <div class="factbar">
-      <div class="pill">Started: 2023-06-12</div>
-      <div class="pill">Pools: 750+ on Stellar</div>
-      <div class="pill">Core role: LTE hub</div>
-      <div class="pill">Mechanisms: Burn + Fees</div>
-      <div class="pill">Rewards until: 2026-06-12</div>
-    </div>
+    <h2 class="section">what it is</h2>
+    <p class="lead">LIBRE is the main token of the <b style="color:var(--cyan)">Libre Trading Ecosystem</b> — a system of many different tokens that are continuously traded against one another through liquidity pools. There is no single coin held in isolation; there is a living market of personal tokens, and LIBRE sits at its center as the hub that connects the pools.</p>
+    <hr class="divider">
 
-    <footer>
-      <div class="blink">█ CURSOR READY… _</div>
-      <small>LibreXLM © 2025 – Hosted on GitHub Pages</small>
-      <div class="social">
-        <a href="https://x.com/LibreXLM" target="_blank">Twitter</a> |
-        <a href="https://t.me/LibreTradingEcosystem" target="_blank">Telegram</a>
-      </div>
+    <h2 class="section">the idea</h2>
+    <p class="lead">Every trade inside the ecosystem pays a fee that stays in the pools, and over time the total number of LIBRE in circulation keeps shrinking as supply is burned. The idea is that constant trading combined with a shrinking supply should, over time, create upward pressure on price — the longer the system runs and the more it is traded, the stronger that effect should become.</p>
+    <p style="color:var(--violet)">This is the <b style="color:var(--pink-soft)">intention behind the design</b>, not a promise or a guarantee. Value is meant to emerge from motion and scarcity working together — see the <a href="system.html">system explained</a> and the <a href="supply.html">live supply</a>.</p>
+    <hr class="divider">
+
+    <h2 class="section">disclaimer</h2>
+    <div class="disclaimer">
+      LIBRE is a personal project. I can't control what other people do with it, but I regard it as part of my own personal wealth. It is an open-ended experiment on a public blockchain — not a company, a fund, or a financial product — and nothing here is investment advice.
+    </div>
+    <footer class="footer">
+      <a href="https://x.com/LibreXLM" target="_blank" rel="noopener">twitter</a> ·
+      <a href="https://t.me/LibreTradingEcosystem" target="_blank" rel="noopener">telegram</a>
+      <p class="blink">&gt; LIBRE READY <b>_</b></p>
+      LibreXLM © 2026
     </footer>
   </div>
 </body>
