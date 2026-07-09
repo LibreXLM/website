@@ -2,184 +2,153 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>LibreTradingEcosystem</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LIBRE Trading Ecosystem — it's all about liquidity</title>
+  <meta name="description" content="A system of personal tokens traded continuously through liquidity pools on Stellar. $LIBRE is the hub that ties the network together.">
+  <meta name="theme-color" content="#1a0033">
+  <link rel="icon" href="LIBRE.png">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="LIBRE Trading Ecosystem — it's all about liquidity">
+  <meta property="og:description" content="A system of personal tokens traded continuously through liquidity pools on Stellar. $LIBRE is the hub that ties the network together.">
+  <meta property="og:image" content="https://librequidity.org/LIBRE.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://librequidity.org/LIBRE.png">
   <style>
-    body {
-      background-color: #000;
-      color: #e0e0e0;
-      font-family: "Courier New", monospace;
-      margin: 20px;
-      line-height: 1.6;
-    }
-    h1 {
-      color: #66ccff;
-      text-align: center;
-      text-shadow: 0 0 8px #00ffff, 0 0 15px #003366;
-    }
-    h2 {
-      color: #ffcc00;
-      text-align: center;
-      margin-top: 5px;
-      text-shadow: 0 0 6px #ff9900;
-    }
-    .nav {
-      text-align: center;
-      margin: 20px 0;
-      padding: 10px;
-      border: 2px solid #ff00ff;
-      box-shadow: 0 0 12px #ff00ff;
-      background: #111;
-    }
-    .nav a {
-      margin: 0 12px;
-      color: #ff6699;
-      text-decoration: none;
-      font-weight: bold;
-    }
-    .nav a:hover {
-      text-decoration: underline;
-      color: #66ffcc;
-    }
-    .marquee {
-      margin: 15px 0;
-      background: #111;
-      border: 1px dashed #666;
-      padding: 6px;
-      font-weight: bold;
-      color: #ffccff;
-      box-shadow: 0 0 10px #ff00ff;
-    }
-    .content {
-      max-width: 800px;
-      margin: auto;
-      text-align: justify;
-    }
-    .highlight {
-      color: #ffd966;
-    }
-    .important {
-      color: #ff8888;
-    }
-    footer {
-      margin-top: 30px;
-      text-align: center;
-      font-size: 12px;
-      color: #888;
-    }
-    .social {
-      margin-top: 10px;
-      font-family: "Courier New", monospace;
-    }
-    .social a {
-      margin: 0 8px;
-      color: #ff6699;
-      text-decoration: none;
-      font-weight: bold;
-    }
-    .social a:hover {
-      text-decoration: underline;
-      color: #66ffcc;
-    }
-  </style>
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap');
+:root{
+  --ink:#1a0033; --cyan:#00fff7; --pink:#ff2e88; --pink-soft:#ff8af0;
+  --violet:#cdb6ff; --line:rgba(0,255,247,.4); --pixel:'Press Start 2P',monospace;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0; min-height:100vh; overflow-x:hidden; color:#fff; line-height:1.7;
+  font-family:"Trebuchet MS","Segoe UI",sans-serif;
+  background:linear-gradient(180deg,#1a0033 0%,#3a0066 38%,#7a1f8f 60%,#ff2e88 100%) fixed;
+}
+body::before{
+  content:""; position:fixed; top:9%; left:50%; transform:translateX(-50%);
+  width:260px; height:260px; border-radius:50%; z-index:0; pointer-events:none;
+  background:linear-gradient(180deg,#fff200 0%,#ff8a00 45%,#ff2e88 100%);
+  box-shadow:0 0 90px 20px rgba(255,46,136,.45);
+}
+body::after{
+  content:""; position:fixed; left:-25%; right:-25%; bottom:0; height:40vh;
+  z-index:0; pointer-events:none;
+  background-image:linear-gradient(90deg,rgba(0,255,247,.5) 1px,transparent 1px),
+                   linear-gradient(0deg,rgba(0,255,247,.5) 1px,transparent 1px);
+  background-size:44px 44px; transform:perspective(320px) rotateX(70deg);
+  animation:flow 1.4s linear infinite;
+}
+@keyframes flow{to{background-position:0 44px}}
+.wrap{position:relative; z-index:2; max-width:840px; margin:0 auto; padding:40px 22px 46vh}
+.eyebrow{text-align:center; font-family:var(--pixel); font-size:11px; letter-spacing:3px;
+  color:var(--cyan); text-transform:uppercase; margin:0 0 14px}
+.title{
+  text-align:center; font-size:64px; line-height:.95; font-weight:bold; letter-spacing:2px; margin:0;
+  background:linear-gradient(180deg,#fff 0%,#ffd6f5 40%,#00fff7 100%);
+  -webkit-background-clip:text; background-clip:text; color:transparent;
+  text-shadow:0 0 28px rgba(0,255,247,.4);
+}
+.title.sm{font-size:44px}
+.tag{text-align:center; color:var(--pink-soft); letter-spacing:3px; font-size:18px; margin:10px 0 26px}
+.nav{display:flex; flex-wrap:wrap; gap:10px; justify-content:center; margin:0 0 26px}
+.nav a{color:var(--cyan); text-decoration:none; padding:9px 15px; font-size:13px; letter-spacing:1px;
+  border:1px solid var(--cyan); border-radius:2px; background:rgba(0,255,247,.06); transition:.12s}
+.nav a:hover{background:var(--cyan); color:var(--ink)}
+.nav a.active{background:var(--pink); border-color:var(--pink); color:#fff}
+.ticker{border-top:1px solid rgba(255,255,255,.3); border-bottom:1px solid rgba(255,255,255,.3);
+  overflow:hidden; white-space:nowrap; margin:0 0 26px; padding:8px 0; color:#ffd6f5; font-size:13px; letter-spacing:2px}
+.ticker span{display:inline-block; padding-left:100%; animation:tick 18s linear infinite}
+@keyframes tick{to{transform:translateX(-100%)}}
+.card{background:rgba(26,0,51,.55); border:1px solid var(--line); border-radius:6px;
+  padding:22px 26px; margin:0 0 22px; backdrop-filter:blur(2px)}
+.card h2{color:var(--cyan); margin:0 0 12px; font-size:22px}
+.card h3{color:var(--pink-soft); margin:18px 0 6px; font-size:17px}
+.card b,.card strong{color:var(--cyan)}
+h2.section{font-family:var(--pixel); font-size:15px; color:var(--cyan); letter-spacing:1px;
+  margin:34px 0 6px; text-align:center}
+.divider{border:0; height:1px; background:linear-gradient(90deg,transparent,var(--pink),transparent); margin:22px 0}
+.lead{font-size:19px}
+a{color:var(--pink-soft)} a:hover{color:#fff}
+.stats{display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:12px; margin:0 0 22px}
+.stat{background:rgba(0,255,247,.06); border:1px solid var(--line); border-radius:6px; padding:16px}
+.stat .k{display:block; font-family:var(--pixel); font-size:9px; letter-spacing:1px; color:var(--violet); text-transform:uppercase}
+.stat .v{display:block; font-size:26px; font-weight:bold; color:var(--cyan); margin-top:8px; word-break:break-word}
+.step{display:flex; gap:16px; background:rgba(26,0,51,.55); border:1px solid var(--line);
+  border-radius:6px; padding:18px 20px; margin:0 0 16px}
+.step .n{flex:none; font-family:var(--pixel); font-size:20px; color:var(--pink);
+  text-shadow:0 0 12px var(--pink); width:38px}
+.step h3{margin:0 0 6px; color:var(--cyan); font-size:18px}
+.step p{margin:0}
+.btn{display:inline-block; padding:11px 20px; margin:6px 6px 0 0; font-size:15px; letter-spacing:1px;
+  text-decoration:none; color:var(--ink); font-weight:bold; background:var(--cyan); border-radius:3px; border:1px solid var(--cyan)}
+.btn.ghost{background:transparent; color:var(--cyan)}
+.btn:hover{background:var(--pink-soft); border-color:var(--pink-soft); color:var(--ink)}
+table{width:100%; border-collapse:collapse; margin:10px 0; font-size:14px}
+th,td{text-align:left; padding:8px 10px; border-bottom:1px solid rgba(0,255,247,.18)}
+th{font-family:var(--pixel); font-size:9px; letter-spacing:1px; color:var(--cyan); text-transform:uppercase}
+tfoot td{font-weight:bold; color:var(--pink-soft); border-top:1px solid var(--line)}
+.addr{font-family:'VT323',monospace; font-size:16px; word-break:break-all}
+.disclaimer{border:1px dashed var(--pink-soft); background:rgba(255,46,136,.08);
+  border-radius:6px; padding:16px 20px; color:#ffd6f5; font-size:15px; margin:22px 0}
+.hub{display:flex; flex-wrap:wrap; align-items:center; justify-content:center; gap:14px; margin:22px 0}
+.hub .node{border:1px solid var(--line); background:rgba(0,255,247,.06); border-radius:6px;
+  padding:10px 14px; font-size:13px; color:#fff}
+.hub .core{border-color:var(--pink); background:rgba(255,46,136,.15); color:#fff; font-weight:bold;
+  box-shadow:0 0 18px rgba(255,46,136,.4)}
+.hub .arrow{color:var(--cyan); font-size:20px}
+.footer{position:relative; z-index:2; text-align:center; font-size:13px; color:var(--violet);
+  letter-spacing:1px; margin-top:26px}
+.footer a{color:var(--cyan); text-decoration:none; margin:0 8px}
+.footer a:hover{color:#fff}
+.blink{font-family:'VT323',monospace; color:var(--cyan)}
+.blink b{animation:bl 1s steps(2,start) infinite}
+@keyframes bl{to{opacity:0}}
+@media (max-width:560px){.title{font-size:44px}.title.sm{font-size:32px}}
+@media (prefers-reduced-motion:reduce){body::after,.ticker span,.blink b{animation:none}}
+</style>
 </head>
 <body>
+  <div class="wrap">
+    <p class="eyebrow">stellar network · since 2023</p>
+    <h1 class="title">LIBRE</h1>
+    <p class="tag">it's all about liquidity</p>
+    <nav class="nav">
+      <a href="index.html" class="active">home</a>
+      <a href="libre.html">libre</a>
+      <a href="system.html">system</a>
+      <a href="create-token.html">create a token</a>
+      <a href="supply.html">supply</a>
+    </nav>
+    <div class="ticker"><span>experimental tokens &nbsp;✦&nbsp; autonomous trading &nbsp;✦&nbsp; shrinking supply &nbsp;✦&nbsp; value from motion &nbsp;✦&nbsp; it's all about liquidity</span></div>
 
-  <h1>🌐 WELCOME TO THE LIBRE TRADING ECOSYSTEM 🌐</h1>
-  <h2>It's all about Liquidity!</h2>
-
-  <div class="nav">
-    <a href="index.html">Home</a> |
-    <a href="assets.html">List of all Assets</a> |
-    <a href="glossary.html">Glossary</a> |
-    <a href="Tutorial.html">How to create your first personal Token</a> |
-    <a href="rewards.html">Rewards</a> |
-  </div>
-
-  <div class="marquee">
-    <marquee scrollamount="5">
-      🚀 Experimental Tokens ✦ Autonomous Trading ✦ Money Reimagined ✦ The Future of Value 🚀
-    </marquee>
-  </div>
-
-  <div class="content">
-    <p>
-      The LibreTradingEcosystem is an experiment that explores the idea of 
-      <b>personal tokens</b>. Imagine a world where anyone can create their own digital token, 
-      representing not only value but also personal reputation, creativity, 
-      and social connections. These tokens continuously interact inside 
-      <a href="LP.html" class="highlight">✨ Liquidity Pools ✨</a>, where they trade against each other, 
-      generating fees, rewards, and potentially new forms of emergent value.  Unlike traditional markets, value 
-      here does not emerge solely from scarcity or speculation, but from the constant flow 
-      of exchange itself. The ecosystem grows through activity, not accumulation.
-    </p>
-    <p>
-      For most of human civilization, money was inseparable from the communities that used it. 
-      With the rise of capitalism and the expansion of financial systems, however, 
-      money became increasingly abstract, reduced to digits on screens. 
-      It grew detached from daily life, governed by central banks and global markets.
-    </p>
-    <p>
-      This detachment had consequences. 
-      Money, once rooted in trust and cooperation, turned into a cold mechanism of accumulation 
-      and control. Growth of the money supply and the logic of endless profit 
-      left individuals increasingly powerless. Money was, in a sense, 
-      <span class="important">dehumanized</span>.
-    </p>
-
-    <p>
-  Then came <b>Bitcoin</b>. For the first time, a digital asset emerged that could not be
-  inflated at will, that was borderless, transparent, and secured by mathematics rather than institutions. 
-  Bitcoin fundamentally changed how we think about money and value: 
-  it reintroduced scarcity into the digital realm and showed that trust can be rooted in code 
-  rather than centralized authorities.
-</p>
-<p>
-  Building on this shift, the <b>Stellar Network</b> pushes the idea further. 
-  Its focus on <span class="highlight">financial inclusion</span> makes it, in my view, one of the 
-  most important infrastructures for the future of the financial system. 
-  Stellar enables low-cost, high-speed transfers across borders and gives people everywhere 
-  the ability to participate in a global marketplace. 
-  This is the reason I chose Stellar as the foundation for my personal trading system.
-</p>
-<p>
-  The <b>LibreTradingEcosystem</b> is not a single token, but a living system composed of many. 
-  Each token has its own <span class="highlight">liquidity composition</span>, balancing between stable assets 
-  that provide trust and predictability, and volatile or experimental assets that bring dynamism and growth. 
-  At the heart of it all stands <b>$LIBRE</b>, the main asset of the ecosystem, 
-  which ties the network of tokens together and serves as the core around which activity flows.
-</p>
-    <p style="margin-top:25px;">
-  At the heart of this experiment stands <b>$LIBRE</b>, the first and central asset of the LibreTradingEcosystem. 
-  It acts as a hub that connects hundreds of liquidity pools and countless personal tokens. 
-  If you want to understand the vision and strategy behind it, visit the dedicated page here: 
-  <a href="LIBRE.html">$LIBRE</a>.
-</p>
-
-    <p>
-      <span class="highlight">Personal tokens</span> offer a possible reversal. 
-      They allow money to once again carry meaning, identity, and imagination. 
-      A token can represent a person, a community, or a shared vision. 
-      It re-personalizes exchange and reconnects value to relationships.
-    </p>
-    <p>
-      The LibreTradingEcosystem is a digital laboratory for these ideas. 
-      It embraces volatility, autonomy, and experimentation. 
-      By participating, you are not only trading tokens, but also 
-      testing what money could become in the 21st century.
-    </p>
-    <p style="text-align:center; margin-top:30px; font-size: 18px;">
-      👉 <a href="Tutorial.html">Learn how to create your first personal Token</a> 👈
-    </p>
-  </div>
-
-  <footer>
-    <marquee scrollamount="2" behavior="alternate">
-      LibreXLM © 2025 – Hosted on GitHub Pages
-    </marquee>
-    <div class="social">
-      <a href="https://x.com/LibreXLM" target="_blank" rel="noopener">🐦 Twitter</a> |
-      <a href="https://t.me/LibreTradingEcosystem" target="_blank" rel="noopener">📡 Telegram</a>
+    <div class="card">
+      <p class="lead">The <b>Libre Trading Ecosystem</b> is a system of many different tokens that are traded against one another, continuously, through liquidity pools on the Stellar network. At its center stands <b>$LIBRE</b> — the main token and the hub that ties the whole network together.</p>
     </div>
-  </footer>
+
+    <h2 class="section">explore</h2>
+    <div class="card">
+      <h3><a href="libre.html">→ $LIBRE</a></h3>
+      <p>What the main token is, the idea behind it, and why the design points toward rising value over time.</p>
+      <h3><a href="system.html">→ The Libre Trading System</a></h3>
+      <p>How dozens of personal tokens, liquidity pools and burns fit together into one living market.</p>
+      <h3><a href="create-token.html">→ Create your own token</a></h3>
+      <p>Mint your own Stellar token and plug it into the ecosystem in a few steps.</p>
+      <h3><a href="supply.html">→ Live supply</a></h3>
+      <p>The current on-chain LIBRE supply — total, circulating, burned and locked — in real time.</p>
+    </div>
+
+    <div class="card" style="text-align:center">
+      <a class="btn" href="create-token.html">create a token</a>
+      <a class="btn ghost" href="system.html">how it works</a>
+    </div>
+    <footer class="footer">
+      <a href="https://x.com/LibreXLM" target="_blank" rel="noopener">twitter</a> ·
+      <a href="https://t.me/LibreTradingEcosystem" target="_blank" rel="noopener">telegram</a>
+      <p class="blink">&gt; LIBRE READY <b>_</b></p>
+      LibreXLM © 2026
+    </footer>
+  </div>
 </body>
 </html>
