@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LIBRE Supply — live on-chain data</title>
+  <meta name="description" content="The current LIBRE supply on Stellar in real time: total issued, circulating, and the burned & locked wallets, pulled live from on-chain data.">
+  <meta name="theme-color" content="#1a0033">
+  <link rel="icon" href="LIBRE.png">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="LIBRE Supply — live on-chain data">
+  <meta property="og:description" content="The current LIBRE supply on Stellar in real time: total issued, circulating, and the burned & locked wallets, pulled live from on-chain data.">
+  <meta property="og:image" content="https://librequidity.org/LIBRE.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://librequidity.org/LIBRE.png">
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap');
+:root{
+  --ink:#1a0033; --cyan:#00fff7; --pink:#ff2e88; --pink-soft:#ff8af0;
+  --violet:#cdb6ff; --line:rgba(0,255,247,.4); --pixel:'Press Start 2P',monospace;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0; min-height:100vh; overflow-x:hidden; color:#fff; line-height:1.7;
+  font-family:"Trebuchet MS","Segoe UI",sans-serif;
+  background:linear-gradient(180deg,#1a0033 0%,#3a0066 38%,#7a1f8f 60%,#ff2e88 100%) fixed;
+}
+body::before{
+  content:""; position:fixed; top:9%; left:50%; transform:translateX(-50%);
+  width:260px; height:260px; border-radius:50%; z-index:0; pointer-events:none;
+  background:linear-gradient(180deg,#fff200 0%,#ff8a00 45%,#ff2e88 100%);
+  box-shadow:0 0 90px 20px rgba(255,46,136,.45);
+}
+body::after{
+  content:""; position:fixed; left:-25%; right:-25%; bottom:0; height:40vh;
+  z-index:0; pointer-events:none;
+  background-image:linear-gradient(90deg,rgba(0,255,247,.5) 1px,transparent 1px),
+                   linear-gradient(0deg,rgba(0,255,247,.5) 1px,transparent 1px);
+  background-size:44px 44px; transform:perspective(320px) rotateX(70deg);
+  animation:flow 1.4s linear infinite;
+}
+@keyframes flow{to{background-position:0 44px}}
+.wrap{position:relative; z-index:2; max-width:840px; margin:0 auto; padding:40px 22px 46vh}
+.eyebrow{text-align:center; font-family:var(--pixel); font-size:11px; letter-spacing:3px;
+  color:var(--cyan); text-transform:uppercase; margin:0 0 14px}
+.title{
+  text-align:center; font-size:64px; line-height:.95; font-weight:bold; letter-spacing:2px; margin:0;
+  background:linear-gradient(180deg,#fff 0%,#ffd6f5 40%,#00fff7 100%);
+  -webkit-background-clip:text; background-clip:text; color:transparent;
+  text-shadow:0 0 28px rgba(0,255,247,.4);
+}
+.title.sm{font-size:44px}
+.tag{text-align:center; color:var(--pink-soft); letter-spacing:3px; font-size:18px; margin:10px 0 26px}
+.nav{display:flex; flex-wrap:wrap; gap:10px; justify-content:center; margin:0 0 26px}
+.nav a{color:var(--cyan); text-decoration:none; padding:9px 15px; font-size:13px; letter-spacing:1px;
+  border:1px solid var(--cyan); border-radius:2px; background:rgba(0,255,247,.06); transition:.12s}
+.nav a:hover{background:var(--cyan); color:var(--ink)}
+.nav a.active{background:var(--pink); border-color:var(--pink); color:#fff}
+.ticker{border-top:1px solid rgba(255,255,255,.3); border-bottom:1px solid rgba(255,255,255,.3);
+  overflow:hidden; white-space:nowrap; margin:0 0 26px; padding:8px 0; color:#ffd6f5; font-size:13px; letter-spacing:2px}
+.ticker span{display:inline-block; padding-left:100%; animation:tick 18s linear infinite}
+@keyframes tick{to{transform:translateX(-100%)}}
+.card{background:rgba(26,0,51,.55); border:1px solid var(--line); border-radius:6px;
+  padding:22px 26px; margin:0 0 22px; backdrop-filter:blur(2px)}
+.card h2{color:var(--cyan); margin:0 0 12px; font-size:22px}
+.card h3{color:var(--pink-soft); margin:18px 0 6px; font-size:17px}
+.card b,.card strong{color:var(--cyan)}
+h2.section{font-family:var(--pixel); font-size:15px; color:var(--cyan); letter-spacing:1px;
+  margin:34px 0 6px; text-align:center}
+.divider{border:0; height:1px; background:linear-gradient(90deg,transparent,var(--pink),transparent); margin:22px 0}
+.lead{font-size:19px}
+a{color:var(--pink-soft)} a:hover{color:#fff}
+.stats{display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:12px; margin:0 0 22px}
+.stat{background:rgba(0,255,247,.06); border:1px solid var(--line); border-radius:6px; padding:16px}
+.stat .k{display:block; font-family:var(--pixel); font-size:9px; letter-spacing:1px; color:var(--violet); text-transform:uppercase}
+.stat .v{display:block; font-size:26px; font-weight:bold; color:var(--cyan); margin-top:8px; word-break:break-word}
+.step{display:flex; gap:16px; background:rgba(26,0,51,.55); border:1px solid var(--line);
+  border-radius:6px; padding:18px 20px; margin:0 0 16px}
+.step .n{flex:none; font-family:var(--pixel); font-size:20px; color:var(--pink);
+  text-shadow:0 0 12px var(--pink); width:38px}
+.step h3{margin:0 0 6px; color:var(--cyan); font-size:18px}
+.step p{margin:0}
+.btn{display:inline-block; padding:11px 20px; margin:6px 6px 0 0; font-size:15px; letter-spacing:1px;
+  text-decoration:none; color:var(--ink); font-weight:bold; background:var(--cyan); border-radius:3px; border:1px solid var(--cyan)}
+.btn.ghost{background:transparent; color:var(--cyan)}
+.btn:hover{background:var(--pink-soft); border-color:var(--pink-soft); color:var(--ink)}
+table{width:100%; border-collapse:collapse; margin:10px 0; font-size:14px}
+th,td{text-align:left; padding:8px 10px; border-bottom:1px solid rgba(0,255,247,.18)}
+th{font-family:var(--pixel); font-size:9px; letter-spacing:1px; color:var(--cyan); text-transform:uppercase}
+tfoot td{font-weight:bold; color:var(--pink-soft); border-top:1px solid var(--line)}
+.addr{font-family:'VT323',monospace; font-size:16px; word-break:break-all}
+.disclaimer{border:1px dashed var(--pink-soft); background:rgba(255,46,136,.08);
+  border-radius:6px; padding:16px 20px; color:#ffd6f5; font-size:15px; margin:22px 0}
+.hub{display:flex; flex-wrap:wrap; align-items:center; justify-content:center; gap:14px; margin:22px 0}
+.hub .node{border:1px solid var(--line); background:rgba(0,255,247,.06); border-radius:6px;
+  padding:10px 14px; font-size:13px; color:#fff}
+.hub .core{border-color:var(--pink); background:rgba(255,46,136,.15); color:#fff; font-weight:bold;
+  box-shadow:0 0 18px rgba(255,46,136,.4)}
+.hub .arrow{color:var(--cyan); font-size:20px}
+.footer{position:relative; z-index:2; text-align:center; font-size:13px; color:var(--violet);
+  letter-spacing:1px; margin-top:26px}
+.footer a{color:var(--cyan); text-decoration:none; margin:0 8px}
+.footer a:hover{color:#fff}
+.blink{font-family:'VT323',monospace; color:var(--cyan)}
+.blink b{animation:bl 1s steps(2,start) infinite}
+@keyframes bl{to{opacity:0}}
+@media (max-width:560px){.title{font-size:44px}.title.sm{font-size:32px}}
+@media (prefers-reduced-motion:reduce){body::after,.ticker span,.blink b{animation:none}}
+</style>
+  <script>
+    const LIBRE_CODE="LIBRE";
+    const LIBRE_ISSUER="GAYCCWKECNGDRHYU3UTREBD2XLC3CUQN6FV22TKM4WCQER3IWR7TF5CY";
+    const SUPPLY_URL=`https://api.stellar.expert/explorer/public/asset/${LIBRE_CODE}-${LIBRE_ISSUER}/supply`;
+    const fmt=a=>isFinite(a)?a.toLocaleString("en-US",{maximumFractionDigits:7}):"0";
+    async function jget(u){const r=await fetch(u);if(!r.ok)throw new Error(r.status);return r.json();}
+    async function tget(u){const r=await fetch(u);if(!r.ok)throw new Error(r.status);return r.text();}
+    async function bal(acc){
+      try{const d=await jget(`https://horizon.stellar.org/accounts/${acc}`);
+        const b=(d.balances||[]).find(x=>x.asset_code===LIBRE_CODE&&x.asset_issuer===LIBRE_ISSUER);
+        return b?parseFloat(b.balance||"0"):0;}catch(e){return NaN;}
+    }
+    async function run(){
+      const spans=[...document.querySelectorAll(".wallet-balance[data-account]")];
+      let locked=0;
+      for(const s of spans){const v=await bal(s.dataset.account);
+        if(isFinite(v)){locked+=v; s.textContent=fmt(v);} else s.textContent="error";}
+      document.getElementById("total-locked").textContent=fmt(locked);
+      document.getElementById("total-locked-foot").textContent=fmt(locked);
+      let total=0; try{total=parseFloat((await tget(SUPPLY_URL)).trim());}catch(e){}
+      document.getElementById("total-supply").textContent=fmt(total);
+      document.getElementById("circulating-supply").textContent=fmt(total-locked);
+    }
+    document.addEventListener("DOMContentLoaded",()=>run().catch(console.error));
+  </script>
+</head>
+<body>
+  <div class="wrap">
+    <p class="eyebrow">live on-chain data</p>
+    <h1 class="title sm">LIBRE Supply</h1>
+    <p class="tag">motion &amp; scarcity, in real time</p>
+    <nav class="nav">
+      <a href="index.html">home</a>
+      <a href="libre.html">libre</a>
+      <a href="system.html">system</a>
+      <a href="create-token.html">create a token</a>
+      <a href="supply.html" class="active">supply</a>
+    </nav>
+    <div class="stats">
+      <div class="stat"><span class="k">total issued</span><span class="v"><span id="total-supply">…</span></span></div>
+      <div class="stat"><span class="k">circulating</span><span class="v"><span id="circulating-supply">…</span></span></div>
+      <div class="stat"><span class="k">locked / burned</span><span class="v"><span id="total-locked">…</span></span></div>
+    </div>
+
+    <div class="card">
+      <p>Inspired by Bitcoin's fixed-supply idea, LIBRE began with an <b>initial supply of 21,000,000 tokens</b>. Through repeated <b>burn events</b> and permanently <b>locked wallets</b>, the amount in real circulation keeps shrinking. Every number on this page is pulled directly from live on-chain data.</p>
+    </div>
+
+    <h2 class="section">burned &amp; locked wallets</h2>
+    <div class="card">
+      <table>
+        <thead><tr><th>#</th><th>Name</th><th>Wallet</th><th>Balance</th></tr></thead>
+        <tbody>
+        <tr>
+          <td>1</td><td>LIBRE Test Burn Wallet</td>
+          <td class="addr"><a href="https://stellar.expert/explorer/public/account/GBFLW247CP6E77OMYN6UO4VYCUPQPDS2BD4B3NMM2FY7GD3BC35R6AMA" target="_blank" rel="noopener">GBFLW247CP6E77OMYN6UO4VYCUPQPDS2BD4B3NMM2FY7GD3BC35R6AMA</a></td>
+          <td><span class="wallet-balance" data-account="GBFLW247CP6E77OMYN6UO4VYCUPQPDS2BD4B3NMM2FY7GD3BC35R6AMA">loading…</span> LIBRE</td>
+        </tr>
+        <tr>
+          <td>2</td><td>LIBRE Burn Event I</td>
+          <td class="addr"><a href="https://stellar.expert/explorer/public/account/GBYE7X2QRU4ZGSMUBGJ2I4CRDS3IMJJ4JXK4GTSO4N5ZNJAMGS24TWL3" target="_blank" rel="noopener">GBYE7X2QRU4ZGSMUBGJ2I4CRDS3IMJJ4JXK4GTSO4N5ZNJAMGS24TWL3</a></td>
+          <td><span class="wallet-balance" data-account="GBYE7X2QRU4ZGSMUBGJ2I4CRDS3IMJJ4JXK4GTSO4N5ZNJAMGS24TWL3">loading…</span> LIBRE</td>
+        </tr>
+        <tr>
+          <td>3</td><td>LIBRE Burn Event II</td>
+          <td class="addr"><a href="https://stellar.expert/explorer/public/account/GCB2AGWYRRLMSOQGYQ4MVGDYVIFLPWCJY6HFKNJABMXPNSBH52GVHN6Z" target="_blank" rel="noopener">GCB2AGWYRRLMSOQGYQ4MVGDYVIFLPWCJY6HFKNJABMXPNSBH52GVHN6Z</a></td>
+          <td><span class="wallet-balance" data-account="GCB2AGWYRRLMSOQGYQ4MVGDYVIFLPWCJY6HFKNJABMXPNSBH52GVHN6Z">loading…</span> LIBRE</td>
+        </tr>
+        <tr>
+          <td>4</td><td>LIBRE × DicInu Burn</td>
+          <td class="addr"><a href="https://stellar.expert/explorer/public/account/GBLPG7DBN6DQN57CSFIJEM3JKBI62F57YDHQPKK5QOSVHRL2MN4SRHHZ" target="_blank" rel="noopener">GBLPG7DBN6DQN57CSFIJEM3JKBI62F57YDHQPKK5QOSVHRL2MN4SRHHZ</a></td>
+          <td><span class="wallet-balance" data-account="GBLPG7DBN6DQN57CSFIJEM3JKBI62F57YDHQPKK5QOSVHRL2MN4SRHHZ">loading…</span> LIBRE</td>
+        </tr>
+        <tr>
+          <td>5</td><td>Locked Issuer Wallet I</td>
+          <td class="addr"><a href="https://stellar.expert/explorer/public/account/GAGG42ACMQ3454R7GB6JUAKU6OPT4EXPW4QWYKEKBVYDQJC3ELGW74AX" target="_blank" rel="noopener">GAGG42ACMQ3454R7GB6JUAKU6OPT4EXPW4QWYKEKBVYDQJC3ELGW74AX</a></td>
+          <td><span class="wallet-balance" data-account="GAGG42ACMQ3454R7GB6JUAKU6OPT4EXPW4QWYKEKBVYDQJC3ELGW74AX">loading…</span> LIBRE</td>
+        </tr>
+        <tr>
+          <td>6</td><td>Locked Issuer Wallet II</td>
+          <td class="addr"><a href="https://stellar.expert/explorer/public/account/GB7LCUIDT3C2DUOX4O2FSCCBH5NXIUJZ64YQ2N75N5POZRI4DA4AMGEE" target="_blank" rel="noopener">GB7LCUIDT3C2DUOX4O2FSCCBH5NXIUJZ64YQ2N75N5POZRI4DA4AMGEE</a></td>
+          <td><span class="wallet-balance" data-account="GB7LCUIDT3C2DUOX4O2FSCCBH5NXIUJZ64YQ2N75N5POZRI4DA4AMGEE">loading…</span> LIBRE</td>
+        </tr>
+        <tr>
+          <td>7</td><td>BASH LP Wallet</td>
+          <td class="addr"><a href="https://stellar.expert/explorer/public/account/GD2QISFGY7TEHQ7QBAYWGON35FCDAWFONMYC4JRU4P77NQ6QDZ56JY75" target="_blank" rel="noopener">GD2QISFGY7TEHQ7QBAYWGON35FCDAWFONMYC4JRU4P77NQ6QDZ56JY75</a></td>
+          <td><span class="wallet-balance" data-account="GD2QISFGY7TEHQ7QBAYWGON35FCDAWFONMYC4JRU4P77NQ6QDZ56JY75">loading…</span> LIBRE</td>
+        </tr>
+        </tbody>
+        <tfoot><tr><td colspan="3"><b>Total locked / burned</b></td><td><b><span id="total-locked-foot">…</span> LIBRE</b></td></tr></tfoot>
+      </table>
+      <p style="color:var(--violet);font-size:14px">🔥 Adjusting for these wallets, the estimated circulating supply is calculated live from on-chain data. Numbers may vary slightly with each ledger update.</p>
+    </div>
+
+    <div style="text-align:center">
+      <a class="btn" href="https://stellar.expert/explorer/public/asset/LIBRE-GAYCCWKECNGDRHYU3UTREBD2XLC3CUQN6FV22TKM4WCQER3IWR7TF5CY" target="_blank" rel="noopener">verify on StellarExpert</a>
+    </div>
+    <footer class="footer">
+      <a href="https://x.com/LibreXLM" target="_blank" rel="noopener">twitter</a> ·
+      <a href="https://t.me/LibreTradingEcosystem" target="_blank" rel="noopener">telegram</a>
+      <p class="blink">&gt; LIBRE READY <b>_</b></p>
+      LibreXLM © 2026
+    </footer>
+  </div>
+</body>
+</html>
