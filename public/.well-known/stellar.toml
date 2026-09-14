@@ -30,8 +30,8 @@ conditions = "This asset is not part of the LIBRE Trading Ecosystem but is tempo
 image = "https://librequidity.org/XTROOP.png"
 is_asset_anchored = true
 is_unlimited = true
-anchor_asset = "Silver"
-anchor_asset_type = "commodity"
+anchor_asset = "XTROOP"
+anchor_asset_type = "crypto"
 
 [[CURRENCIES]]
 code = "DAWG"
