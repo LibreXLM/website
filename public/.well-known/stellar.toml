@@ -25,11 +25,11 @@ status = "live"
 issuer = "GARPXWTVB4QAGDZDCKV7ERN5GJTTMBSLOGPQPHYRVLYOW24CFB2SWCR5"
 display_decimals = 7
 name = "XTROOP"
-desc = "A XTROOP is to a Lumen what a drop is to XRP. With a fixed max supply of 10,000,000 XAGX, XTROOPS are engineered for scarcity at scale while remaining highly efficient for everyday use. XAGX is silver-backed and bonded, combining the stability of a top-tier store of value with the speed and flexibility of the Stellar network. This dual nature makes XTROOPS uniquely positioned as both a liquidity asset and a powerhouse for micro-transactions, where precision and trust matter most. Digital silver. Stellar speed. Micro-unit dominance."
+desc = "STELLAR XTROOP: a scarce Stellar-based store-of-value and liquidity Token with a 7M maximum Supply. Its primary Liquidity is bonded to silver, with additional exposure to XLM, SHX, VELO and more.(7M MAX SUPPLY)-Issuing wallet 🔒 the wrong way. permanently locked and inaccessible—no transactions or further issuance possible."
 conditions = "This asset is not part of the LIBRE Trading Ecosystem but is temporarily hosted on librequidity.org. XTROOP is an experimental asset on the Stellar network and does not represent a claim on any legal entity or on physical silver. No guaranteed returns or price stability. Users should do their own research and only participate with funds they can afford to lose."
 image = "https://librequidity.org/XTROOP.png"
-is_asset_anchored = true
-is_unlimited = true
+is_asset_anchored = false
+is_unlimited = false
 anchor_asset = "XTROOP"
 anchor_asset_type = "crypto"
 
